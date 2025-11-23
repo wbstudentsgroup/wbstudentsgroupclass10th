@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WB Students Group — Tests & Practice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #0b0716;
+      --bg-2: #120927;
+      --muted: rgba(226,238,248,0.8);
+      --accent-1: #9b6cff;
+      --accent-2: #2be6c8;
+      --radius: 14px;
+      --ease: cubic-bezier(.2,.9,.3,1);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 600px at 5% 10%, rgba(155,108,255,0.08), transparent 12%),
+                  linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      color:#eaf6ff;
+    }
+    .wrap{ max-width:900px; margin:18px auto 32px; padding:18px; }
+    .topbar{ display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px; border-radius:12px; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03); box-shadow: 0 12px 36px rgba(2,6,20,0.5);
+    }
+    .brand{ display:flex; gap:12px; align-items:center; }
+    .brand img{ width:48px; height:48px; border-radius:10px; object-fit:cover; border:2px solid rgba(255,255,255,0.04) }
+    .brand .title{ font-weight:800; color:var(--accent-1); font-size:1rem; }
+    .brand .subtitle{ font-size:0.85rem; color:var(--muted) }
+
+    .back-btn{
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:rgba(5,10,28,0.96);
+      color:var(--muted);
+      font-size:0.8rem;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+      transition: background .16s var(--ease), transform .16s var(--ease), box-shadow .16s var(--ease);
+    }
+    .back-btn span{ font-size:1rem; }
+    .back-btn:hover{
+      background:rgba(9,16,40,1);
+      transform:translateY(-1px);
+      box-shadow:0 10px 24px rgba(0,0,0,0.7);
+    }
+
+    .card{
+      margin-top:18px;
+      padding:18px;
+      border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.85);
+    }
+    h1{ margin:0 0 8px 0; font-size:1.35rem; color:#f2f5ff; }
+    .muted{ color:var(--muted); font-size:0.9rem; }
+
+    .feature-grid{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .feature{
+      flex:1 1 160px;
+      padding:14px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      text-align:left;
+      font-weight:700;
+      color:var(--muted);
+      cursor:pointer;
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
+    }
+    .feature span{ display:block; font-size:0.8rem; opacity:0.8; margin-top:4px; }
+    .feature:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 40px rgba(0,0,0,0.95);
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:#071126;
+    }
+
+    @media(max-width:700px){
+      .wrap{ padding:14px; margin-top:12px; }
+      .card{ padding:14px; }
+      h1{ font-size:1.18rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img src="https://i.ibb.co/3mxmCNDP/wb-logo.jpg" alt="WB logo">
+        <div>
+          <div class="title">WB Students Group — Class 10</div>
+          <div class="subtitle">Tests & Practice</div>
+        </div>
+      </div>
+      <a class="back-btn" href="index.html#home"><span>←</span><span>Back to home</span></a>
+    </div>
+
+    <section class="card">
+      <h1>Tests & Practice</h1>
+      <div class="muted">Full-screen view of all test actions for Class 10 students.</div>
+
+      <div class="feature-grid">
+        <button class="feature" onclick="alert('Open practice test portal (integrate platform or link)')">
+          Take Practice Test
+          <span>Chapter-wise and full-length tests</span>
+        </button>
+        <button class="feature" onclick="alert('Open scheduled live test signup')">
+          Join Live Test
+          <span>Register for upcoming live tests</span>
+        </button>
+        <button class="feature" onclick="alert('Upload answers or request marking')">
+          Submit Answer Sheet
+          <span>Upload copies for checking</span>
+        </button>
+        <button class="feature" onclick="alert('Open topic-wise quizzes')">
+          Topic Quizzes
+          <span>Quick MCQ quizzes by topic</span>
+        </button>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

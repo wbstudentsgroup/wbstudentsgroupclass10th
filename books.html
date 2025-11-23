@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WB Students Group — Books & Material</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #0b0716;
+      --bg-2: #120927;
+      --muted: rgba(226,238,248,0.8);
+      --accent-1: #9b6cff;
+      --accent-2: #2be6c8;
+      --radius: 14px;
+      --ease: cubic-bezier(.2,.9,.3,1);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 600px at 5% 10%, rgba(155,108,255,0.08), transparent 12%),
+                  linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      color:#eaf6ff;
+    }
+    .wrap{ max-width:900px; margin:18px auto 32px; padding:18px; }
+    .topbar{ display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px; border-radius:12px; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03); box-shadow: 0 12px 36px rgba(2,6,20,0.5);
+    }
+    .brand{ display:flex; gap:12px; align-items:center; }
+    .brand img{ width:48px; height:48px; border-radius:10px; object-fit:cover; border:2px solid rgba(255,255,255,0.04) }
+    .brand .title{ font-weight:800; color:var(--accent-1); font-size:1rem; }
+    .brand .subtitle{ font-size:0.85rem; color:var(--muted) }
+
+    .back-btn{
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:rgba(5,10,28,0.96);
+      color:var(--muted);
+      font-size:0.8rem;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+      transition: background .16s var(--ease), transform .16s var(--ease), box-shadow .16s var(--ease);
+    }
+    .back-btn span{ font-size:1rem; }
+    .back-btn:hover{
+      background:rgba(9,16,40,1);
+      transform:translateY(-1px);
+      box-shadow:0 10px 24px rgba(0,0,0,0.7);
+    }
+
+    .card{
+      margin-top:18px;
+      padding:18px;
+      border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.85);
+    }
+    h1{ margin:0 0 8px 0; font-size:1.35rem; color:#f2f5ff; }
+    .muted{ color:var(--muted); font-size:0.9rem; }
+
+    .books-tabs{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
+    .books-tab{
+      padding:6px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(5,10,25,0.96);
+      color:var(--muted);
+      font-size:0.82rem;
+      font-weight:600;
+      cursor:pointer;
+      transition: background .16s var(--ease), color .16s var(--ease), box-shadow .16s var(--ease), border-color .16s var(--ease), transform .16s var(--ease);
+    }
+    .books-tab.active{
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:#071126;
+      border-color:transparent;
+      box-shadow:0 8px 22px rgba(0,0,0,0.6);
+    }
+    .books-tab:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 28px rgba(0,0,0,0.75);
+    }
+
+    .book-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .book-meta strong{
+      color:var(--accent-1);
+      font-size:0.95rem;
+      display:block;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .book-meta small{ display:block; font-size:12px; color:var(--muted); opacity:0.9; margin-top:2px; }
+    .book-open{
+      padding:6px 12px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:#071126;
+      font-weight:600;
+      font-size:0.8rem;
+      text-decoration:none;
+      border:none;
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      box-shadow:0 6px 20px rgba(2,6,23,0.7);
+      transition: transform .16s var(--ease), box-shadow .16s var(--ease), opacity .16s var(--ease);
+    }
+    .book-open:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 40px rgba(2,6,23,0.9);
+      opacity:0.95;
+    }
+
+    .book-card{ margin-top:10px; padding:14px; border-radius:var(--radius); background:rgba(5,10,28,0.96); border:1px solid rgba(255,255,255,0.04); box-shadow:0 14px 36px rgba(0,0,0,0.9); }
+
+    @media(max-width:700px){
+      .wrap{ padding:14px; margin-top:12px; }
+      .card{ padding:14px; }
+      h1{ font-size:1.18rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img src="https://i.ibb.co/3mxmCNDP/wb-logo.jpg" alt="WB logo">
+        <div>
+          <div class="title">WB Students Group — Class 10</div>
+          <div class="subtitle">Books & Free Material</div>
+        </div>
+      </div>
+      <a class="back-btn" href="index.html#books"><span>←</span><span>Back to home</span></a>
+    </div>
+
+    <section class="card">
+      <h1>Books & Free Material</h1>
+      <div class="muted">Same material list as home page, but full screen for comfortable browsing.</div>
+
+      <div class="books-tabs" id="booksTabs">
+        <button class="books-tab active" data-tab="language">Language</button>
+        <button class="books-tab" data-tab="compulsory">Compulsory</button>
+        <button class="books-tab" data-tab="special">Special</button>
+      </div>
+
+      <div id="booksArea" style="margin-top:10px"></div>
+    </section>
+  </div>
+
+<script>
+const BOOKS = {
+  language: [
+    {title:'English Guide Class 10', link:'#'},
+    {title:'Bengali Second Language Notes', link:'#'}
+  ],
+  compulsory: [
+    {title:'Mathematics Class 10 - Notes', link:'#'},
+    {title:'Science Revision Pack', link:'#'}
+  ],
+  special: [
+    {title:'Important Formula Sheet (All Subjects)', link:'#'},
+    {title:'Last 10 Years Question Compilation', link:'#'}
+  ]
+};
+let BOOKS_ACTIVE = 'language';
+
+function renderBooks(){
+  const area = document.getElementById('booksArea');
+  area.innerHTML = '';
+  const list = BOOKS[BOOKS_ACTIVE] || [];
+  if(!list.length){
+    area.innerHTML = '<div class="muted">No material added yet.</div>';
+    return;
+  }
+  list.forEach(b=>{
+    const el = document.createElement('div');
+    el.className = 'book-card';
+    el.innerHTML = `
+      <div class="book-row">
+        <div class="book-meta">
+          <strong>${b.title}</strong>
+          <small>Free PDF · Instant open</small>
+        </div>
+        <a class="book-open" href="${b.link}" target="_blank">Open PDF ↗</a>
+      </div>`;
+    area.appendChild(el);
+  });
+}
+
+(function initTabs(){
+  const wrap = document.getElementById('booksTabs');
+  if(!wrap) return;
+  const tabs = Array.from(wrap.querySelectorAll('.books-tab'));
+  tabs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const key = btn.getAttribute('data-tab');
+      if(!key || !BOOKS[key]) return;
+      BOOKS_ACTIVE = key;
+      tabs.forEach(b=> b.classList.toggle('active', b === btn));
+      renderBooks();
+    });
+  });
+})();
+
+renderBooks();
+</script>
+</body>
+</html>

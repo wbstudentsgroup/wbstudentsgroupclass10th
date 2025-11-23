@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WB Students Group — Latest Update</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #0b0716;
+      --bg-2: #120927;
+      --muted: rgba(226,238,248,0.8);
+      --accent-1: #9b6cff;
+      --accent-2: #2be6c8;
+      --radius: 14px;
+      --ease: cubic-bezier(.2,.9,.3,1);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 600px at 5% 10%, rgba(155,108,255,0.08), transparent 12%),
+                  linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      color:#eaf6ff;
+    }
+    .wrap{ max-width:900px; margin:18px auto 32px; padding:18px; }
+    .topbar{ display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px; border-radius:12px; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03); box-shadow: 0 12px 36px rgba(2,6,20,0.5);
+    }
+    .brand{ display:flex; gap:12px; align-items:center; }
+    .brand img{ width:48px; height:48px; border-radius:10px; object-fit:cover; border:2px solid rgba(255,255,255,0.04) }
+    .brand .title{ font-weight:800; color:var(--accent-1); font-size:1rem; }
+    .brand .subtitle{ font-size:0.85rem; color:var(--muted) }
+
+    .back-btn{
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:rgba(5,10,28,0.96);
+      color:var(--muted);
+      font-size:0.8rem;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+      transition: background .16s var(--ease), transform .16s var(--ease), box-shadow .16s var(--ease);
+    }
+    .back-btn span{ font-size:1rem; }
+    .back-btn:hover{
+      background:rgba(9,16,40,1);
+      transform:translateY(-1px);
+      box-shadow:0 10px 24px rgba(0,0,0,0.7);
+    }
+
+    .card{
+      margin-top:18px;
+      padding:18px;
+      border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.85);
+    }
+    .badge-date{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.8rem;
+      font-weight:700;
+      letter-spacing:0.3px;
+      background:rgba(11,17,40,0.98);
+      color:var(--accent-2);
+      border:1px solid rgba(155,108,255,0.5);
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0 0 8px 0;
+      font-size:1.35rem;
+      color:#f2f5ff;
+    }
+    .muted{ color:var(--muted); font-size:0.9rem; }
+    .content{ margin-top:12px; font-size:0.95rem; line-height:1.6; color:rgba(232,242,255,0.96); }
+    .content a{
+      color:var(--accent-2);
+      text-decoration:underline;
+    }
+    @media(max-width:700px){
+      .wrap{ padding:14px; margin-top:12px; }
+      .card{ padding:14px; }
+      h1{ font-size:1.18rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img src="https://i.ibb.co/3mxmCNDP/wb-logo.jpg" alt="WB logo">
+        <div>
+          <div class="title">WB Students Group — Class 10</div>
+          <div class="subtitle">Latest Update · Detailed View</div>
+        </div>
+      </div>
+      <a class="back-btn" href="index.html#home"><span>←</span><span>Back to home</span></a>
+    </div>
+
+    <div id="updateCard" class="card">
+      <!-- filled by JS -->
+      <div class="muted">Loading update…</div>
+    </div>
+  </div>
+
+<script>
+const UPDATES = [
+  {date:"2025-11-19", title:'English sample paper uploaded', html: 'English sample paper uploaded. <a href="#">Download sample paper</a>'},
+  {date:"2025-11-12", title:'Weekly tests every Sunday', html: 'Schedule for weekly tests announced — Sundays.'},
+  {date:"2025-10-30", title:'Maths revision notes uploaded', html: 'Revision notes for Mathematics uploaded.'},
+  {date:"2025-10-15", title:'Science sample paper released', html: 'New Science sample paper released for practice. <a href="#">Download</a>'},
+  {date:"2025-10-01", title:'Updated syllabus PDF', html: 'Updated syllabus PDF shared as per latest board circular. <a href="#">View syllabus</a>'},
+  {date:"2025-09-20", title:'Important exam guidelines', html: 'Important exam guidelines shared for students and parents.'}
+];
+
+function renderView(){
+  const params = new URLSearchParams(window.location.search);
+  const all = params.get('all');
+  const idStr = params.get('id');
+  const card = document.getElementById('updateCard');
+  if(!card) return;
+
+  // If all view requested or no valid id, show list of notices
+  const idx = idStr !== null ? parseInt(idStr, 10) : NaN;
+  const hasSingle = Number.isInteger(idx) && UPDATES[idx];
+
+  if(all || !hasSingle){
+    let html = '';
+    UPDATES.forEach((u)=>{
+      const d = new Date(u.date);
+      const fmt = d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+      html += `
+        <div class="card" style="margin-top:14px">
+          <div class="badge-date">${fmt}</div>
+          <h1>${u.title}</h1>
+          <div class="content">${u.html}</div>
+        </div>
+      `;
+    });
+    card.outerHTML = html; // replace single placeholder card with multiple cards
+    return;
+  }
+
+  const data = UPDATES[idx];
+  const d = new Date(data.date);
+  const fmt = d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+
+  card.innerHTML = `
+    <div class="badge-date">${fmt}</div>
+    <h1>${data.title}</h1>
+    <div class="content">${data.html}</div>
+  `;
+}
+
+renderView();
+</script>
+</body>
+</html>
