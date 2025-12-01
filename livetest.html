@@ -1,19 +1,278 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Practice Test — Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body { background: #120927; color: #fff; font-family: Inter, Arial, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin:0; }
-    .coming { font-size: 2rem; font-weight: 700; color: #9b6cff; background: rgba(255,255,255,0.04); padding: 32px 48px; border-radius: 16px; box-shadow: 0 8px 32px #0006; }
-    .back-btn { display:inline-block; margin-top:24px; color:#2be6c8; text-decoration:none; font-weight:600; }
-  </style>
+<meta charset="utf-8">
+<title>Live Test Schedule — Animated Attempt Button</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#120927;
+    --accent1:#8a63ff;
+    --accent2:#5ac2ff;
+    --glass: rgba(255,255,255,0.05);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    background:var(--bg);
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-bottom:40px;
+  }
+
+  /* Header + title (same as before) */
+  .header{ width:100%; display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,0.04); }
+  .back-btn{ color:var(--accent1); text-decoration:none; padding:6px 12px; border-radius:10px; background: rgba(138,99,255,0.12); font-weight:600; }
+  .title{font-weight:700}
+  .main-title{ margin:20px 0 14px; font-size:1.9rem; color:var(--accent1); font-weight:800; }
+
+  /* Slider basics */
+  .slider-container{ width:100%; max-width:520px; position:relative; overflow:hidden; padding:18px; }
+  .slider-track{ display:flex; gap:20px; transition:transform .5s cubic-bezier(.2,.9,.2,1); touch-action: pan-x; }
+  .card{ min-width:100%; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.06); border-radius:20px; padding:28px; box-shadow:0 14px 36px rgba(0,0,0,0.55); backdrop-filter: blur(8px); display:flex; flex-direction:column; justify-content:space-between; height:420px; transition:transform .35s ease, box-shadow .35s; }
+  .card.active{ transform:scale(1.01); box-shadow:0 28px 60px rgba(138,99,255,0.22); }
+  .floating{ position:absolute; right:14px; top:-22px; width:68px; height:68px; border-radius:14px; background:linear-gradient(135deg, rgba(138,99,255,0.12), rgba(90,194,255,0.06)); display:flex; align-items:center; justify-content:center; transform:rotate(-12deg); box-shadow:0 12px 30px rgba(2,2,10,0.5); border:1px solid rgba(255,255,255,0.04); }
+  .tag{ display:inline-block; padding:8px 14px; border-radius:20px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); font-weight:800; color:#fff; font-size:13px; margin-bottom:10px; }
+  h3{ margin:8px 0 6px; font-size:1.28rem; } .meta{ color:rgba(223,214,255,0.6); font-size:14px; margin-bottom:14px; line-height:1.45 }
+  .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+  .chip{ padding:10px 12px; border-radius:12px; background:var(--glass); border:1px solid rgba(255,255,255,0.04); font-weight:600; color:#efe9ff; font-size:13px; cursor:pointer; user-select:none; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; position:relative; overflow:hidden; }
+
+  /* ----- ATTEMPT BUTTON: Premium animated + ripple ----- */
+  .attempt-btn {
+    --pad-y:14px;
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    padding:var(--pad-y) 18px;
+    border-radius:14px;
+    font-weight:800;
+    text-decoration:none;
+    color:#06060a;
+    background: linear-gradient(90deg,var(--accent1),var(--accent2));
+    background-size: 300% 100%;
+    transition: transform .18s ease, box-shadow .18s ease;
+    box-shadow: 0 14px 40px rgba(138,99,255,0.18);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* animated sliding gradient */
+  .attempt-btn.animated {
+    animation: gradientShift 3s linear infinite;
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* press feedback */
+  .attempt-btn:active { transform: translateY(1px) scale(.995); }
+
+  /* ripple inside attempt button */
+  .attempt-btn .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    background: rgba(255,255,255,0.22);
+    pointer-events: none;
+    transition: transform .5s cubic-bezier(.2,.9,.2,1), opacity .5s;
+    opacity: 1;
+  }
+
+  /* small outer glow on hover */
+  .attempt-btn:hover { box-shadow: 0 22px 55px rgba(138,99,255,0.28); transform: translateY(-3px); }
+
+  /* arrows + dots rest (kept simple) */
+  .arrow{ position:absolute; top:50%; transform:translateY(-50%); background: rgba(255,255,255,0.04); border:none; color:#fff; padding:10px 12px; border-radius:12px; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.45); }
+  #prev{ left:8px; } #next{ right:8px; } .dots{ display:flex; gap:8px; justify-content:center; margin-top:14px; } .dot{ width:10px; height:10px; border-radius:999px; background:rgba(255,255,255,0.12); } .dot.active{ background: linear-gradient(90deg,var(--accent1),var(--accent2)); box-shadow:0 8px 20px rgba(138,99,255,0.12) }
+
+  /* toast for feedback */
+  .toast{ position:fixed; left:50%; transform:translateX(-50%) translateY(18px); bottom:24px; background: rgba(20,10,40,0.95); color:#fff; padding:10px 16px; border-radius:12px; box-shadow: 0 12px 30px rgba(0,0,0,0.6); font-weight:600; opacity:0; transition:opacity .22s ease, transform .22s ease; pointer-events:none; z-index:1200; }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  /* responsive */
+  @media(max-width:640px){
+    .card{ height:480px; padding:20px; border-radius:18px; }
+    .floating{ width:60px; height:60px; right:10px; top:-18px; }
+    .main-title{ font-size:1.5rem }
+  }
+</style>
 </head>
 <body>
-  <div>
-    <div class="coming">Live Test<br>Coming soon</div>
-    <a class="back-btn" href="index.html#tests">← Back to home</a>
+
+  <div class="header">
+    <a class="back-btn" href="index.html">← Back Home</a>
+    <div class="title">Live Test</div>
   </div>
+
+  <div class="main-title">Live Test Schedule</div>
+
+  <div class="slider-container" id="slider">
+    <button class="arrow" id="prev" aria-label="Previous">◀</button>
+
+    <div class="slider-track" id="track">
+      <!-- Card 1 -->
+      <article class="card active" role="group" aria-roledescription="slide" aria-label="History MCQ Test">
+        <div class="floating" aria-hidden="true">
+          <!-- icon -->
+          <svg viewBox="0 0 24 24" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#8a63ff"/><stop offset="1" stop-color="#5ac2ff"/></linearGradient></defs><path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 12 6 12s6-6.75 6-12c0-3.314-2.686-6-6-6z" fill="url(#g1)"/><circle cx="12" cy="8" r="2.4" fill="#fff"/></svg>
+        </div>
+
+        <div>
+          <span class="tag">ATTEMPT TEST</span>
+          <h3>History MCQ Test</h3>
+          <div class="meta">100 MCQ · Total 100 Marks · Duration: 45 Minutes<br><strong>Test Date:</strong> 1st December</div>
+        </div>
+
+        <div>
+          <div class="chips">
+            <div class="chip" data-text="Subject: History">Subject: History</div>
+            <div class="chip" data-text="Type: MCQ">Type: MCQ</div>
+            <div class="chip" data-text="Duration: 45 Min">Duration: 45 Min</div>
+            <div class="chip" data-text="Marks: 100">Marks: 100</div>
+          </div>
+
+          <!-- ATTEMPT BUTTON with animation + ripple -->
+          <a class="attempt-btn animated" id="attempt1" href="https://quizzory.in/id/6582d851914c41093909b1a0" target="_blank" rel="noopener">
+            Attempt Test
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card" role="group" aria-roledescription="slide" aria-label="History Map Pointing">
+        <div class="floating" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#8a63ff"/><stop offset="1" stop-color="#5ac2ff"/></linearGradient></defs><path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 12 6 12s6-6.75 6-12c0-3.314-2.686-6-6-6z" fill="url(#g2)"/><circle cx="12" cy="8" r="2.4" fill="#fff"/></svg>
+        </div>
+
+        <div>
+          <span class="tag">SCHEDULED</span>
+          <h3>History — Map Pointing</h3>
+          <div class="meta">Map-based questions · Total 100 Marks · Duration: 60 Minutes<br><strong>Test Date:</strong> 3rd December</div>
+        </div>
+
+        <div>
+          <div class="chips">
+            <div class="chip" data-text="Topic: Map Pointing">Topic: Map Pointing</div>
+            <div class="chip" data-text="Class: 11/12">Class: 11/12</div>
+            <div class="chip" data-text="Type: MCQ">Type: MCQ</div>
+            <div class="chip" data-text="Marks: 100">Marks: 100</div>
+          </div>
+
+          <a class="attempt-btn animated" id="attempt2" href="#" target="_blank" rel="noopener">
+            Attempt Map Test
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <button class="arrow" id="next" aria-label="Next">▶</button>
+
+    <div class="dots" id="dots">
+      <div class="dot active" aria-hidden="true"></div>
+      <div class="dot" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* Slider logic (same) */
+const track = document.getElementById('track');
+const slides = Array.from(track.children);
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const dots = Array.from(document.querySelectorAll('.dot'));
+let index = 0;
+function update(){ track.style.transform = `translateX(-${index * 100}%)`; slides.forEach((s,i)=> s.classList.toggle('active', i===index)); dots.forEach((d,i)=> d.classList.toggle('active', i===index)); prevBtn.disabled = index === 0; nextBtn.disabled = index === slides.length - 1; }
+prevBtn.addEventListener('click', ()=> { index = Math.max(0, index-1); update(); });
+nextBtn.addEventListener('click', ()=> { index = Math.min(slides.length-1, index+1); update(); });
+dots.forEach((d,i)=> d.addEventListener('click', ()=> { index = i; update(); }));
+/* Swipe */
+let startX = 0, isDown = false;
+track.addEventListener('pointerdown', e => { isDown = true; startX = e.clientX; track.setPointerCapture?.(e.pointerId); });
+track.addEventListener('pointerup', e => { if(!isDown) return; isDown = false; const diff = e.clientX - startX; if(diff > 60) { index = Math.max(0, index-1); update(); } else if(diff < -60){ index = Math.min(slides.length-1, index+1); update(); } try { track.releasePointerCapture?.(e.pointerId); } catch{} });
+track.addEventListener('pointercancel', ()=> isDown = false); track.addEventListener('pointerleave', ()=> isDown = false);
+update();
+
+/* Chips: same touch animation + toast */
+const chips = document.querySelectorAll('.chip');
+const toast = document.getElementById('toast');
+function showToast(text){ toast.textContent = text; toast.classList.add('show'); clearTimeout(toast._timeout); toast._timeout = setTimeout(()=> toast.classList.remove('show'), 1200); }
+chips.forEach(chip=>{
+  chip.addEventListener('pointerdown', (e)=>{
+    const rect = chip.getBoundingClientRect();
+    const rx = e.clientX - rect.left;
+    const ry = e.clientY - rect.top;
+    let ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.left = rx + 'px';
+    ripple.style.top = ry + 'px';
+    chip.appendChild(ripple);
+    requestAnimationFrame(()=> {
+      ripple.style.width = rect.width * 1.8 + 'px';
+      ripple.style.height = rect.width * 1.8 + 'px';
+      ripple.style.transform = 'translate(-50%,-50%) scale(1)';
+      ripple.style.opacity = '0';
+    });
+    chip.classList.add('tapped');
+    showToast(chip.dataset.text || chip.textContent.trim());
+    setTimeout(()=>{ chip.classList.remove('tapped'); if(ripple && ripple.parentNode) ripple.parentNode.removeChild(ripple); },420);
+  });
+  chip.addEventListener('pointerup', e=> e.preventDefault());
+  chip.tabIndex = 0;
+  chip.addEventListener('keydown', e=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); chip.dispatchEvent(new PointerEvent('pointerdown', {bubbles:true, clientX: chip.getBoundingClientRect().left + 10})); } });
+});
+
+/* ---------- ATTEMPT BUTTON: ripple + click animation ---------- */
+function attachAttemptRipple(btn){
+  if(!btn) return;
+  btn.addEventListener('pointerdown', (e)=>{
+    // create ripple circle
+    const rect = btn.getBoundingClientRect();
+    const rx = e.clientX - rect.left;
+    const ry = e.clientY - rect.top;
+    let ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.left = rx + 'px';
+    ripple.style.top = ry + 'px';
+    // size and start
+    btn.appendChild(ripple);
+    requestAnimationFrame(()=> {
+      ripple.style.width = Math.max(rect.width, rect.height) * 2 + 'px';
+      ripple.style.height = Math.max(rect.width, rect.height) * 2 + 'px';
+      ripple.style.transform = 'translate(-50%,-50%) scale(1)';
+      ripple.style.opacity = '0';
+    });
+    // quick press scale
+    btn.style.transform = 'translateY(0) scale(0.98)';
+    setTimeout(()=> btn.style.transform = '', 180);
+    // cleanup
+    setTimeout(()=>{ if(ripple && ripple.parentNode) ripple.parentNode.removeChild(ripple); },600);
+  });
+
+  // keyboard accessibility
+  btn.addEventListener('keydown', e=>{
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      // simulate pointerdown at center
+      const rect = btn.getBoundingClientRect();
+      const fakeEvent = { clientX: rect.left + rect.width/2, clientY: rect.top + rect.height/2 };
+      btn.dispatchEvent(new PointerEvent('pointerdown', Object.assign({bubbles:true}, fakeEvent)));
+    }
+  });
+}
+
+// attach to both attempt buttons
+attachAttemptRipple(document.getElementById('attempt1'));
+attachAttemptRipple(document.getElementById('attempt2'));
+
+</script>
 </body>
 </html>
