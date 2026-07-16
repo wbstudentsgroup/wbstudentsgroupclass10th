@@ -2,511 +2,935 @@
 <html lang="en">
 <head>
     <meta name="google-site-verification" content="QdWp6KclUO3WdEfBuTkQhXAhnqjiTWrIhc3XT16dT9E" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WB Students Group — Class 10 WBBSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      :root {
+        --bg-deep: #030712; 
+        --card-bg: rgba(255, 255, 255, 0.02);
+        --border-color: rgba(59, 130, 246, 0.12); 
+        --muted: rgba(156, 163, 175, 0.85);
+        --accent-blue: #3b82f6;   
+        --accent-purple: #8b5cf6;   
+        --accent-glow: rgba(59, 130, 246, 0.25);
+        --radius-lg: 18px;
+        --radius-md: 12px;
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      
+      * { 
+        box-sizing: border-box; 
+        margin: 0; 
+        padding: 0;
+      } 
+      
+      html { 
+        scroll-behavior: smooth; 
+      }
+      
+      body {
+        font-family: 'Inter', system-ui, sans-serif;
+        background-color: var(--bg-deep);
+        background-image: 
+          radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+          radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+          radial-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+        background-size: 100% 100%, 100% 100%, 24px 24px;
+        color: #f3f4f6; 
+        -webkit-font-smoothing: antialiased; 
+        overflow-x: hidden;
+        padding-bottom: 40px;
+      }
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>WB Students Group — Class 10 WBBSE </title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<meta name="description" content="WB Class 10 —  resources, tests, image gallery, live updates & countdown to exams.">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<style>
-  :root{
-    --bg-1: #0b0716;
-    --bg-2: #120927;
-    --card: rgba(255,255,255,0.03);
-    --muted: rgba(226,238,248,0.8);
-    --accent-1: #9b6cff;   /* purple */
-    --accent-2: #2be6c8;   /* teal */
-    --glass: rgba(255,255,255,0.04);
-    --radius: 14px;
-    --ease: cubic-bezier(.2,.9,.3,1);
-  }
-  *{box-sizing:border-box} html{scroll-behavior:smooth} body{
-    margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-    background: radial-gradient(1200px 600px at 5% 10%, rgba(155,108,255,0.08), transparent 12%),
-                linear-gradient(180deg,var(--bg-1),var(--bg-2));
-                
-    color:#eaf6ff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  }
+      .wrap {
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 18px;
+      }
 
-  .wrap {
-  max-width:1150px;
-  margin:18px auto;
-  padding:18px;
-  /* padding-top: 80px;  <-- Remove or comment this line */
-}
+      /* 1. Translucent Premium Glass Header */
+      .topbar {
+        position: sticky;
+        top: 15px;
+        z-index: 40;
+        background: rgba(3, 7, 18, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 14px 24px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1.5px solid var(--accent-blue); 
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(59, 130, 246, 0.15);
+        transition: all 0.3s var(--ease-out);
+      }
 
-  /* Topbar */
-  .topbar {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: linear-gradient(135deg, rgba(11,7,22,0.98), rgba(18,9,39,0.98));
-  box-shadow: 0 2px 24px rgba(0,0,0,0.18);
-  padding: 12px 0;
-  margin-bottom: 0;
-}
+      .brand { display: flex; gap: 14px; align-items: center; }
+      .brand img { 
+        width: 48px; 
+        height: 48px; 
+        border-radius: 12px; 
+        object-fit: cover; 
+        border: 1.5px solid rgba(59, 130, 246, 0.3);
+      }
+      .brand .title { 
+        font-weight: 800; 
+        color: #fff; 
+        font-size: 1.2rem; 
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand .title span {
+        background: linear-gradient(90deg, #ffffff, #93c5fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .brand .subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
 
-  .menu-btn {
-  background: rgba(255, 255, 255, 0.08); /* light transparent glass */
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 10px 10px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      .nav { display: flex; gap: 6px; align-items: center; }
+      .nav a { 
+        color: var(--muted); 
+        text-decoration: none; 
+        padding: 8px 16px; 
+        border-radius: var(--radius-md); 
+        font-weight: 600; 
+        font-size: 0.9rem;
+        transition: all 0.25s var(--ease-out); 
+      }
+      .nav a:hover, .nav a.active { 
+        color: #fff; 
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.15);
+      }
 
-.menu-btn {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 6px 10px;   /* ↓ Height kam karne ke liye */
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      .menu-btn {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 10px 14px;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition: all 0.2s var(--ease-out);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .menu-btn i { color: #fff; font-size: 16px; }
+      .menu-btn:hover {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: var(--accent-blue);
+        transform: translateY(-1px);
+      }
+      .menu-btn:active { transform: scale(0.92); }
 
-.menu-btn .icon {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-}
+      .founder-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2px;
+      }
 
+      /* 2. Step-Style Countdown Zone */
+      .hero-band {
+        padding: 24px;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(135deg, rgba(8, 12, 30, 0.95), rgba(3, 7, 18, 0.98));
+        border: 1px solid rgba(59, 130, 246, 0.15);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+        animation: breathingGlow 8s infinite ease-in-out;
+      }
 
+      .count-wrap { display: flex; justify-content: center; }
+      .count-card {
+        width: 100%; 
+        display: flex; 
+        gap: 24px; 
+        align-items: center;
+      }
 
-/* Hover effect */
-.menu-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-}
+      .count-left { flex: 1; }
+      .count-head { 
+        font-weight: 800; 
+        font-size: 1.25rem; 
+        color: #fff; 
+        letter-spacing: -0.3px; 
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .count-head i { color: var(--accent-blue); }
+      .count-sub { color: var(--muted); font-size: 0.9rem }
 
-/* Active click effect */
-.menu-btn:active {
-  transform: scale(0.95);
-}
+      .count-timers { display: flex; gap: 14px; align-items: center; justify-content: flex-end; }
+      
+      .time-seg {
+        min-width: 85px;
+        padding: 14px 10px;
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.01);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 15px rgba(0,0,0,0.5);
+        text-align: center;
+        position: relative;
+        transition: all 0.3s var(--ease-out);
+        overflow: hidden;
+      }
+      .time-seg::after {
+        content: '';
+        position: absolute;
+        top: 50%; left: 0; width: 100%; height: 1px;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+      }
+      .time-seg:hover {
+        transform: translateY(-4px) scale(1.03);
+        border-color: var(--accent-blue);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+      }
+      .time-num { 
+        font-size: 28px; 
+        font-weight: 900; 
+        background: linear-gradient(180deg, #ffffff, #93c5fd); 
+        -webkit-background-clip: text; 
+        background-clip: text; 
+        color: transparent; 
+        z-index: 1;
+        position: relative;
+        font-variant-numeric: tabular-nums;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+      }
+      .time-label { 
+        font-size: 10px; 
+        color: var(--muted); 
+        margin-top: 8px; 
+        text-transform: uppercase; 
+        letter-spacing: 1.5px; 
+        font-weight: 700; 
+        z-index: 3;
+        position: relative;
+      }
+      .count-title-mobile { display: none; }
 
-  .brand{ display:flex; gap:12px; align-items:center; }
-  .brand img{ width:56px; height:56px; border-radius:10px; object-fit:cover; border:2px solid rgba(255,255,255,0.04) }
-  .brand .title{ font-weight:800; color:var(--accent-1); font-size:1.02rem; }
-  .brand .subtitle{ font-size:0.86rem; color:var(--muted) }
+      /* Grid layout */
+      .grid { display: grid; grid-template-columns: 1fr 360px; gap: 24px; margin-top: 20px; }
 
-  .nav{ display:flex; gap:8px; align-items:center; }
-  .nav a{ color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:10px; font-weight:700; transition: all .18s var(--ease) }
-  .nav a:hover, .nav a.active{ color:#071126; background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); transform:translateY(-3px) }
+      .card { 
+        background: var(--card-bg); 
+        border-radius: var(--radius-lg); 
+        padding: 24px; 
+        border: 1px solid var(--border-color); 
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6); 
+        color: #f1f5f9; 
+        transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+      }
+      .card:hover { border-color: rgba(59, 130, 246, 0.25); }
 
-  /* Grid */
-  .grid{ display:grid; grid-template-columns: 1fr 360px; gap:18px; margin-top:18px; }
-  @media (max-width:980px){ .grid{ grid-template-columns: 1fr; } .nav{ display:none } }
+      h2 { 
+        margin: 0 0 16px 0; 
+        color: #fff; 
+        font-weight: 800; 
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        letter-spacing: -0.3px;
+      }
+      h2 i { color: var(--accent-blue); }
 
-  .card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:12px; border:1px solid rgba(255,255,255,0.03); box-shadow: 0 12px 30px rgba(2,6,20,0.45); color:#eaf6ff; }
+      /* Slider */
+      .slider-wrap { position: relative; overflow: hidden; border-radius: var(--radius-lg); margin-bottom: 24px; }
+      .slider-container { overflow: hidden; width: 100%; border-radius: var(--radius-lg); }
+      .slider { width: 100%; display: flex; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+      .slide { min-width: 100%; }
+      .slide img { width: 100%; height: 380px; object-fit: cover; display: block; }
 
-  h2{ margin:0 0 8px 0; color:var(--accent-1) }
+      .slider-dots { 
+        position: absolute; 
+        bottom: 15px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        display: flex; 
+        gap: 8px; 
+        z-index: 5; 
+      }
+      .dot { 
+        width: 8px; 
+        height: 8px; 
+        border-radius: 50%; 
+        background: rgba(255,255,255,0.3); 
+        cursor: pointer; 
+        transition: all 0.25s var(--ease-out); 
+      }
+      .dot.active { 
+        transform: scale(1.4); 
+        background: var(--accent-blue); 
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.6); 
+      }
 
-  /* Hero band: countdown + slider in one dark section */
-  .hero-band{
-    margin-top:12px;
-    padding:14px 12px 16px;
-    border-radius:16px;
-    background: linear-gradient(135deg, rgba(5,10,30,0.98), rgba(1,3,12,0.98));
-    border:1px solid rgba(0,0,0,0.7);
-    box-shadow: 0 26px 90px rgba(0,0,0,0.9);
-  }
+      /* 3. RE-DESIGNED "LATEST DYNAMIC UPDATES" (Ultra-Modern Premium Glassmorphism) */
+      .updates-list {
+        max-height: 330px;
+        overflow-y: auto;
+        padding-right: 6px;
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .updates-list::-webkit-scrollbar { width: 4px; }
+      .updates-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
 
-  /* Premium countdown card */
-  .count-wrap{ display:flex; justify-content:center; margin:0 0 4px 0; }
-  .count-card{
-    width:100%; max-width:980px; border-radius:16px; padding:18px; display:flex; gap:18px; align-items:center;
-    background: linear-gradient(135deg, rgba(10,20,45,0.98), rgba(5,10,30,0.98));
-    border:1px solid rgba(0,0,0,0.55); box-shadow: 0 18px 60px rgba(1,3,10,0.85);
-    transition: transform 260ms var(--ease), box-shadow 260ms var(--ease);
-  }
-  .count-card:hover{ transform: translateY(-6px); box-shadow: 0 32px 96px rgba(0,0,0,0.9) }
+      .update-card-new {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.03) 100%);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 16px;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        transition: all 0.3s var(--ease-out);
+        position: relative;
+        overflow: hidden;
+      }
+      .update-card-new::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 3px; height: 100%;
+        background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+      }
+      .update-card-new:hover {
+        transform: translateX(6px) translateY(-2px);
+        border-color: rgba(59, 130, 246, 0.35);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.04) 100%);
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+      }
+      .update-card-new:active {
+        transform: scale(0.98);
+      }
 
-  .count-left{ flex:1 1 320px; min-width:0; }
-  .count-head{ font-weight:900; font-size:1.06rem; color:#fff; letter-spacing:0.2px; margin-bottom:4px }
-  .count-sub{ color:rgba(230,238,248,0.75); font-size:0.95rem }
+      /* Blinking Live Dynamic Bullet Dot */
+      .pulse-indicator {
+        position: relative;
+        width: 8px;
+        height: 8px;
+        background-color: #3b82f6;
+        border-radius: 50%;
+        flex-shrink: 0;
+        box-shadow: 0 0 10px var(--accent-blue);
+      }
+      .pulse-indicator::after {
+        content: '';
+        position: absolute;
+        top: -4px; left: -4px; width: 16px; height: 16px;
+        border: 2px solid #3b82f6;
+        border-radius: 50%;
+        animation: pulseEffect 1.8s infinite ease-out;
+        opacity: 0;
+      }
+      @keyframes pulseEffect {
+        0% { transform: scale(0.5); opacity: 1; }
+        100% { transform: scale(1.6); opacity: 0; }
+      }
 
-  .count-timers{ display:flex; gap:10px; align-items:center; justify-content:flex-end; flex:0 0 auto; }
-  .time-seg{
-    min-width:88px;
-    padding:12px 14px;
-    border-radius:12px;
-    background:radial-gradient(circle at top, rgba(43,230,200,0.08), rgba(2,4,14,0.98));
-    border:1px solid rgba(155,108,255,0.28);
-    box-shadow:0 0 0 rgba(8,255,200,0); /* base, animated on hover */
-    text-align:center;
-    transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), border-color 220ms var(--ease);
-  }
-  .time-seg:hover,
-  .time-seg:focus-visible{
-    transform:translateY(-2px) scale(1.04);
-    box-shadow:0 0 18px rgba(43,230,200,0.35);
-    border-color:rgba(155,108,255,0.9);
-  }
-  .time-seg:active{
-    transform:translateY(0) scale(0.98);
-    box-shadow:0 0 10px rgba(43,230,200,0.25);
-  }
-  .time-num{ font-size:24px; font-weight:900; color: #fff; background: linear-gradient(90deg, var(--accent-2), var(--accent-1)); -webkit-background-clip:text; background-clip:text; color: transparent; letter-spacing:0.6px; }
-  .time-label{ font-size:11px; color:var(--muted); margin-top:6px; text-transform:uppercase; letter-spacing:1px }
-  .count-title-mobile{ display:none; }
+      .update-details {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+      }
+      .update-tag-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .update-date-badge {
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #93c5fd;
+        letter-spacing: 0.8px;
+      }
+      .update-category-tag {
+        font-size: 0.65rem;
+        font-weight: 900;
+        background: rgba(139, 92, 246, 0.15);
+        color: #c084fc;
+        padding: 2px 8px;
+        border-radius: 999px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border: 1px solid rgba(139, 92, 246, 0.2);
+      }
+      .update-text-main {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .update-text-main a {
+        color: #fff;
+        text-decoration: underline;
+        font-weight: 700;
+        text-underline-offset: 3px;
+        transition: color 0.2s;
+      }
+      .update-text-main a:hover {
+        color: var(--accent-blue);
+      }
 
-  /* slider */
-  .slider-wrap{ margin-top:12px; position:relative; overflow:hidden; border-radius:12px }
-  .slider {
-  width: 100%;
-  display: flex;
-  gap: 18px; /* Add gap between slides */
-  overflow: hidden;
-  min-height: 320px;
-  transition: transform 0.42s cubic-bezier(.2,.9,.25,1);
-}
-.slide {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  /* Remove margin if you use gap above */
-}
-  .slide img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  display: block;
-  background: none;
-}
-.slide:not(:last-child) {
-  margin-right: 18px;
-}
+      /* 4. Books & Materials Area (3D virtual style) */
+      .books-tabs { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+      .books-tab {
+        padding: 8px 18px;
+        border-radius: 99px;
+        border: 1px solid var(--border-color);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--muted);
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s var(--ease-out);
+      }
+      .books-tab.active {
+        background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+      }
+      .books-tab:hover { transform: translateY(-2px); }
+      .books-tab:active { transform: scale(0.95); }
 
-/* ...existing code... */
-  .slider-dots{ position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:5 }
-  .dot{ width:10px; height:10px; border-radius:50%; background: rgba(255,255,255,0.18); cursor:pointer; transition: transform .18s; }
-  .dot.active{ transform: scale(1.25); background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); box-shadow: 0 6px 18px rgba(43,230,200,0.12) }
+      .books-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
 
-  /* latest updates */
-  .updates-list{
-    max-height:260px;
-    overflow:auto;
-    padding-right:6px;
-    margin-top:8px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-  }
-  .update-row{
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-    padding:8px 10px;
-    border-radius:10px;
-    background:rgba(5,10,28,0.96);
-    border:1px solid rgba(255,255,255,0.04);
-    box-shadow:0 8px 22px rgba(0,0,0,0.8);
-    transition: transform .16s var(--ease), box-shadow .16s var(--ease), border-color .16s var(--ease);
-  }
-  .update-row:hover{
-    transform:translateY(-2px);
-    box-shadow:0 14px 32px rgba(0,0,0,0.9);
-    border-color:rgba(155,108,255,0.35);
-  }
-  .update-date{
-    min-width:72px;
-    padding:2px 8px;
-    border-radius:8px;
-    font-weight:700;
-    font-size:0.78rem;
-    letter-spacing:0.3px;
-    background:rgba(11,17,40,0.98);
-    color:var(--accent-2);
-    text-align:center;
-    flex:0 0 auto;
-  }
-  .update-txt{
-    color:rgba(230,238,248,0.97);
-    font-size:0.9rem;
-  }
-  .update-txt a{
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
-    padding:2px 8px;
-    margin-left:6px;
-    border-radius:999px;
-    background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
-    color:#071126 !important;
-    font-weight:600;
-    font-size:0.78rem;
-    text-decoration:none;
-    box-shadow:0 4px 16px rgba(0,0,0,0.7);
-    transition: transform .14s var(--ease), box-shadow .14s var(--ease), opacity .14s var(--ease);
-  }
-  .update-txt a:hover{
-    transform:translateY(-1px);
-    box-shadow:0 8px 20px rgba(0,0,0,0.9);
-    opacity:0.96;
-  }
+      .book-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.03) 100%);
+        border-radius: var(--radius-md);
+        padding: 20px;
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        transition: all 0.3s var(--ease-out);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      .book-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 4px; height: 100%;
+        background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+        opacity: 0.8;
+      }
+      .book-card.show { opacity: 1; transform: translateY(0); }
+      
+      .book-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(59, 130, 246, 0.4);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.04) 0%, rgba(139, 92, 246, 0.03) 100%);
+        box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+      }
+      .book-details {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .book-shelf-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: rgba(59, 130, 246, 0.08);
+        border: 1px solid rgba(59, 130, 246, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-blue);
+        font-size: 1.2rem;
+        transition: all 0.3s var(--ease-out);
+      }
+      .book-card:hover .book-shelf-icon {
+        background: var(--accent-blue);
+        color: #fff;
+        transform: scale(1.05) rotate(-3deg);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      }
+      .book-meta strong {
+        color: #fff;
+        font-size: 0.98rem;
+        font-weight: 700;
+        display: block;
+        line-height: 1.4;
+      }
+      
+      .book-open-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        text-decoration: none;
+        transition: all 0.3s var(--ease-out);
+        flex-shrink: 0;
+      }
+      .book-card:hover .book-open-btn {
+        background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        color: #fff;
+        border-color: transparent;
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+      }
+      .book-open-btn i {
+        font-size: 0.9rem;
+        transition: transform 0.3s var(--ease-out);
+      }
+      .book-card:hover .book-open-btn i {
+        transform: translate(2px, -2px);
+      }
+      .book-card:active { transform: scale(0.97); }
 
-  /* feature buttons */
-  .feature-grid{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
-  .feature{ flex:1 1 140px; padding:12px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); text-align:center; font-weight:800; border:1px solid rgba(255,255,255,0.03); color:var(--muted); cursor:pointer; transition: transform .18s var(--ease); }
-  .feature:hover{ transform: translateY(-6px); color:#071126; background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); }
+      /* Assessments */
+      .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 14px }
+      .feature { 
+        padding: 20px 16px; 
+        border-radius: var(--radius-md); 
+        background: rgba(255,255,255,0.015); 
+        text-align: left; 
+        font-weight: 700; 
+        border: 1px solid var(--border-color); 
+        color: #fff; 
+        cursor: pointer; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+        transition: all 0.25s var(--ease-out); 
+      }
+      .feature i {
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .feature span { font-size: 0.95rem; font-weight: 700; }
+      .feature:hover { 
+        transform: translateY(-4px); 
+        background: rgba(59, 130, 246, 0.05);
+        border-color: var(--accent-blue);
+        box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+      }
+      .feature:active { transform: scale(0.95); }
 
-  /* books list rows */
-  .book-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
-  .book-meta strong{
-    color:var(--accent-1);
-    font-size:0.95rem;
-    display:block;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-  .book-meta small{ display:block; font-size:12px; color:var(--muted); opacity:0.9; margin-top:2px; }
-  .book-open{
-    padding:6px 12px;
-    border-radius:999px;
-    background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
-    color:#071126;
-    font-weight:600;
-    font-size:0.8rem;
-    text-decoration:none;
-    border:none;
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
-    box-shadow:0 6px 20px rgba(2,6,23,0.7);
-    transition: transform .16s var(--ease), box-shadow .16s var(--ease), opacity .16s var(--ease);
-  }
-  .book-open span{ font-size:0.9em; opacity:0.9; }
-  .book-open:hover{
-    transform:translateY(-2px);
-    box-shadow:0 12px 40px rgba(2,6,23,0.9);
-    opacity:0.95;
-  }
-  .book-open:active{
-    transform:translateY(0);
-    box-shadow:0 4px 16px rgba(2,6,23,0.7);
-  }
+      /* Sidebar widgets */
+      aside .card { position: sticky; top: 100px; }
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .stat-row:last-child { border-bottom: none; }
+      .stat-val { font-weight: 800; color: var(--accent-blue); font-size: 1.1rem; }
 
-  /* book card animation */
-  .book-card{
-    opacity:0;
-    transform:translateY(6px);
-    transition: opacity .26s var(--ease), transform .26s var(--ease), box-shadow .22s var(--ease);
-  }
-  .book-card.show{
-    opacity:1;
-    transform:translateY(0);
-  }
-  .book-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 16px 40px rgba(0,0,0,0.85);
-  }
+      /* 5. WA FLOATING BADGE WITH INTEGRATED CLOSE BUTTON */
+      .float-ad-container {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        transition: all 0.4s var(--ease-out);
+        transform: translateY(150px);
+        opacity: 0;
+      }
+      .float-ad-container.visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .float-ad-widget {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(3, 7, 18, 0.85);
+        border: 1.5px solid rgba(37, 211, 102, 0.4); 
+        padding: 8px 18px 8px 8px;
+        border-radius: 99px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(37, 211, 102, 0.15);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        text-decoration: none;
+        transition: all 0.3s var(--ease-out);
+      }
+      .float-ad-widget:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 35px rgba(37, 211, 102, 0.25);
+        border-color: #25d366;
+      }
+      .float-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #25d366;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        box-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
+      }
+      .float-info { display: flex; flex-direction: column; }
+      .float-title { color: #fff; font-weight: 800; font-size: 0.85rem; letter-spacing: -0.2px; }
+      .float-desc { color: var(--muted); font-size: 0.72rem; margin-top: 1px; }
 
-  /* books tabs */
-  .books-tabs{
-    margin-top:10px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .books-tab{
-    padding:6px 14px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,0.06);
-    background:rgba(5,10,25,0.96);
-    color:var(--muted);
-    font-size:0.82rem;
-    font-weight:600;
-    cursor:pointer;
-    transition: background .16s var(--ease), color .16s var(--ease), box-shadow .16s var(--ease), border-color .16s var(--ease), transform .16s var(--ease);
-  }
-  .books-tab.active{
-    background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
-    color:#071126;
-    border-color:transparent;
-    box-shadow:0 8px 22px rgba(0,0,0,0.6);
-  }
-  .books-tab:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 28px rgba(0,0,0,0.75);
-  }
+      /* Sleek close button */
+      .close-float-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        cursor: pointer;
+        position: absolute;
+        top: -8px; right: -8px;
+        z-index: 102;
+        transition: all 0.2s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      }
+      .close-float-btn:hover {
+        background: #ef4444;
+        border-color: transparent;
+        transform: scale(1.1);
+      }
 
-  /* sidebar cards */
-  aside .card{ position:sticky; top:18px; }
+      /* 6. SHARA AI ASSISTANT WIDGET (Bottom-Right Corner) */
+      .ai-launcher {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+        box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 100;
+        transition: all 0.3s var(--ease-out);
+        border: 1px solid rgba(255,255,255,0.15);
+      }
+      .ai-launcher:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
+      }
+      .ai-launcher i { color: #fff; font-size: 22px; }
+      
+      .ai-chat-window {
+        position: fixed;
+        bottom: 95px;
+        right: 24px;
+        width: 360px;
+        max-width: calc(100vw - 48px);
+        height: 480px;
+        max-height: calc(100vh - 150px);
+        background: rgba(6, 10, 26, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(59, 130, 246, 0.1);
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: all 0.35s var(--ease-out);
+        transform: translateY(30px) scale(0.95);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .ai-chat-window.open {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-  /* responsive */
-  @media (max-width:920px){
-    .time-seg{ min-width:68px; padding:10px }
-    .slider img{ height:220px }
-  }
+      /* AI Chat elements */
+      .chat-header {
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 16px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .chat-profile { display: flex; align-items: center; gap: 10px; }
+      .chat-avatar {
+        width: 34px; height: 34px; border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+        display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px;
+      }
+      .chat-info { display: flex; flex-direction: column; }
+      .chat-name { font-weight: 800; font-size: 0.95rem; color: #fff; }
+      .chat-status { font-size: 0.72rem; color: #10b981; display: flex; align-items: center; gap: 4px; }
+      .chat-status::before { content: ''; width: 6px; height: 6px; background: #10b981; border-radius: 50%; }
+      .close-chat-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 16px; transition: color 0.2s; }
+      .close-chat-btn:hover { color: #fff; }
 
-  @media (max-width: 700px) {
-  .top-slider {
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding: 8px 2px;
-  }
-  .top-track {
-    flex-direction: row;
-    gap: 0;
-    transition: none !important;
-    transform: none !important;
-    width: max-content;
-  }
-  .top-panel {
-    min-width: 90vw;
-    width: 90vw;
-    margin-right: 12px;
-    scroll-snap-align: start;
-  }
+      .chat-messages {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .chat-messages::-webkit-scrollbar { width: 4px; }
+      .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 99px; }
 
-  /* mobile: make countdown strip compact, reduce gap between title and time */
-  .hero-band{
-    margin-top:10px;
-    padding:10px 8px 12px;
-    border-radius:14px;
-  }
-  .count-wrap{ margin:0 0 4px 0; }
-  .count-card{
-    padding: 8px 10px 10px;
-    border-radius: 10px;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    box-shadow:none;
-    background: linear-gradient(135deg, rgba(5,15,40,0.95), rgba(5,10,30,0.98));
-  }
-  .count-left{ display:none; }
-  .count-timers{
-    width: 100%;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    gap:8px;
-  }
-  .time-seg{
-    min-width:64px;
-    padding:6px 6px;
-    background:radial-gradient(circle at top, rgba(43,230,200,0.06), rgba(1,3,10,0.98));
-    border:1px solid rgba(155,108,255,0.25);
-    box-shadow:0 0 0 rgba(8,255,200,0);
-  }
-  .time-num{ font-size:18px; }
-  .time-label{ font-size:9px; margin-top:4px; }
-  .count-title-mobile{
-    display:block;
-    margin-top:4px;
-    font-size:0.8rem;
-    font-weight:700;
-    color:#ffd54a;
-    text-align:center;
-  }
-}
+      .message { max-width: 80%; padding: 12px 16px; border-radius: 14px; font-size: 0.88rem; line-height: 1.45; }
+      .msg-bot {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.05);
+        align-self: flex-start;
+        color: #e2e8f0;
+        border-bottom-left-radius: 2px;
+      }
+      .msg-user {
+        background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        color: #fff;
+        align-self: flex-end;
+        border-bottom-right-radius: 2px;
+      }
 
-/* side menu (left-edge pull) */
-.side-menu-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(10px);
-  display:none;
-  z-index:50;
-}
-.side-menu-overlay.open{ display:block; }
-.side-menu-panel{
-  position:absolute;
-  top:0;
-  left:0;
-  width:260px;
-  max-width:80vw;
-  height:100%;
-  background:linear-gradient(180deg, #0c0b1a, #070716);
-  border-right:1px solid rgba(255,255,255,0.06);
-  box-shadow:12px 0 40px rgba(0,0,0,0.9);
-  transform:translateX(-100%);
-  transition:transform .24s var(--ease);
-  padding:16px 12px 18px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.side-menu-panel.open{ transform:translateX(0); }
-.side-menu-header{ font-size:0.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px; opacity:0.9; margin-bottom:4px; }
-.side-menu-link{
-  padding:10px 10px;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:var(--muted);
-  text-decoration:none;
-  font-size:0.9rem;
-  font-weight:600;
-  transition:background .16s var(--ease), transform .16s var(--ease), color .16s var(--ease);
-}
-.side-menu-link span.icon{
-  width:22px;
-  height:22px;
-  border-radius:8px;
-  background:rgba(255,255,255,0.04);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:0.9rem;
-}
-.side-menu-link:hover{
-  background:rgba(255,255,255,0.04);
-  transform:translateX(-2px);
-  color:#ffffff;
-}
+      .chat-suggestions {
+        display: flex;
+        gap: 6px;
+        padding: 0 20px 12px;
+        overflow-x: auto;
+      }
+      .chat-suggestions::-webkit-scrollbar { display: none; }
+      .suggest-chip {
+        padding: 6px 12px;
+        border-radius: 99px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        color: var(--muted);
+        font-size: 0.78rem;
+        cursor: pointer;
+        white-space: nowrap;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      .suggest-chip:hover {
+        background: rgba(59, 130, 246, 0.1);
+        border-color: var(--accent-blue);
+        color: #fff;
+      }
 
-/* desktop right-edge hotspot to open menu */
-@media (min-width: 701px){
-  #sideMenuHotspot{
-    position:fixed;
-    top:0;
-    right:0;
-    width:10px;
-    height:100vh;
-    cursor:pointer;
-    z-index:40;
-  }
-}
+      .chat-input-area {
+        padding: 16px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        display: flex;
+        gap: 10px;
+      }
+      .chat-input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-md);
+        padding: 10px 14px;
+        color: #fff;
+        font-size: 0.88rem;
+        outline: none;
+        transition: all 0.2s;
+      }
+      .chat-input:focus {
+        border-color: var(--accent-blue);
+        background: rgba(59, 130, 246, 0.04);
+      }
+      .send-chat-btn {
+        width: 40px; height: 40px; border-radius: var(--radius-md);
+        background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+        border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        transition: all 0.2s;
+      }
+      .send-chat-btn:hover { transform: scale(1.05); }
 
-@keyframes badgeGlow {
-  0% { box-shadow:0 0 18px #ffd70080,0 0 0 4px #fffbe6a0; }
-  100% { box-shadow:0 0 32px #ffd700cc,0 0 0 8px #fffbe6cc; }
-}
-@keyframes fadeInUp {
-  0% { opacity:0; transform:translateY(18px);}
-  100% { opacity:1; transform:translateY(0);}
-}
-</style>
+      /* Toast Notification */
+      .toast-container {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 200;
+        pointer-events: none;
+      }
+      .toast {
+        background: rgba(15, 10, 28, 0.95);
+        border: 1px solid var(--accent-blue);
+        box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: var(--radius-md);
+        padding: 14px 20px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transform: translateY(50px);
+        opacity: 0;
+        transition: all 0.4s var(--ease-out);
+      }
+      .toast.show { transform: translateY(0); opacity: 1; }
+      .toast i { color: var(--accent-blue); font-size: 1.1rem; }
+
+      /* Mobile Navigation Drawer */
+      .side-menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(3, 7, 18, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.35s var(--ease-out), visibility 0.35s var(--ease-out);
+        z-index: 50;
+      }
+      .side-menu-overlay.open { opacity: 1; visibility: visible; }
+      .side-menu-panel {
+        position: absolute;
+        top: 0; left: 0; width: 290px; max-width: 80vw; height: 100%;
+        background: linear-gradient(180deg, #060a18, #030712);
+        border-right: 1px solid var(--border-color);
+        box-shadow: 12px 0 40px rgba(0,0,0,0.8);
+        transform: translateX(-100%);
+        transition: transform 0.35s var(--ease-out);
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .side-menu-overlay.open .side-menu-panel { transform: translateX(0); }
+      .side-menu-header { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; font-weight: 800; }
+      .side-menu-link {
+        padding: 12px 16px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 700;
+        transition: all 0.25s var(--ease-out);
+      }
+      .side-menu-link span.icon {
+        width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.04);
+        display: flex; align-items: center; justify-content: center; color: var(--accent-blue);
+      }
+      .side-menu-link:hover {
+        background: rgba(59, 130, 246, 0.1);
+        transform: translateX(6px);
+        color: #ffffff;
+      }
+
+      .shimmer {
+        animation: placeholderShimmer 1.2s infinite linear;
+        background: linear-gradient(to right, rgba(255,255,255,0.05) 8%, rgba(255,255,255,0.12) 18%, rgba(255,255,255,0.05) 33%);
+        background-size: 800px 104px;
+        position: relative;
+      }
+
+      @keyframes placeholderShimmer {
+        0% { background-position: -468px 0; }
+        100% { background-position: 468px 0; }
+      }
+
+      @keyframes breathingGlow {
+        0%, 100% { border-color: rgba(59, 130, 246, 0.15); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        50% { border-color: rgba(139, 92, 246, 0.3); box-shadow: 0 20px 50px rgba(139, 92, 246, 0.04); }
+      }
+
+      /* Mobile UI Optimization Rules */
+      @media (max-width: 980px) { 
+        .grid { grid-template-columns: 1fr; } 
+        .nav { display: none; } 
+      }
+
+      @media (max-width: 700px) {
+        .topbar { top: 10px; padding: 10px 16px; margin-bottom: 20px; }
+        .brand img { width: 40px; height: 40px; }
+        .brand .title { font-size: 1rem; }
+        .brand .subtitle { font-size: 0.72rem; }
+        .founder-badge { display: none; }
+        
+        .hero-band { padding: 16px 12px; }
+        .count-card { flex-direction: column; text-align: center; gap: 8px;}
+        .count-left { display: none; }
+        .count-timers { width: 100%; justify-content: center; gap: 6px; }
+        .time-seg { min-width: 68px; padding: 10px 4px; }
+        .time-num { font-size: 20px; }
+        .time-label { font-size: 8px; margin-top: 4px; letter-spacing: 1px; }
+        .count-title-mobile {
+          display: block;
+          font-size: 0.85rem;
+          font-weight: 800;
+          color: var(--accent-blue);
+          text-align: center;
+          margin-top: 4px;
+        }
+        .slide img { height: 220px; }
+        .books-grid { grid-template-columns: 1fr; }
+        .float-ad-container { bottom: 16px; left: 16px; }
+        .float-info { display: none; } 
+        .ai-chat-window { bottom: 85px; right: 16px; width: calc(100vw - 32px); height: 400px; }
+        .ai-launcher { bottom: 16px; right: 16px; width: 48px; height: 48px; }
+      }
+    </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- TOPBAR -->
-    <div class="topbar">
+    <!-- GLASS HEADER -->
+    <header class="topbar">
       <div style="display:flex;align-items:center;gap:12px">
         <div class="brand">
           <img src="https://i.ibb.co/3mxmCNDP/wb-logo.jpg" alt="WB logo">
           <div>
-            <div class="title" style="display:flex;align-items:center;gap:8px">
-              <span>WB Students Group — Class 10</span>
-              <button id="menuButton" class="menu-btn" type="button"><span class="icon">☰</span></button>
+            <div class="title">
+              <span>WB Students Group</span>
             </div>
-            <div class="subtitle">Premium • Notes • Tests • Updates</div>
+            <div class="subtitle">WBBSE Class 10 Premium Hub</div>
           </div>
         </div>
         <nav class="nav" aria-label="Primary">
@@ -514,294 +938,513 @@
           <a href="#latest">Latest</a>
           <a href="#books">Books</a>
           <a href="#tests">Tests</a>
-          <a href="#streams">Subjects</a>
         </nav>
       </div>
 
-      <div style="display:flex;align-items:center;gap:12px">
-        <div style="font-weight:800;color:var(--accent-2);">Founder: Yusuf Khan</div>
-        <div style="font-size:0.9rem;color:var(--muted)">Since 09-09-2024</div>
+      <div style="display:flex; align-items:center; gap:8px">
+        <div class="founder-badge">
+          <div style="font-weight:800;color:var(--accent-blue);font-size:0.95rem">Yusuf Khan</div>
+          <div style="font-size:0.75rem;color:var(--muted)">Founder</div>
+        </div>
+        <button id="menuButton" class="menu-btn" type="button" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
+    </header>
 
-    </div>
-
-    <!-- COUNTDOWN (dark band) -->
-    <div class="hero-band">
+    <!-- STEP STYLE COUNTDOWN ZONE -->
+    <div id="home" class="hero-band">
       <div class="count-wrap">
         <div class="count-card" role="region" aria-label="Countdown to class 10 exam">
           <div class="count-left">
-            <div class="count-head">Class 10 Board Exam</div>
-            <div class="count-sub">Exam countdown — stay prepared</div>
+            <div class="count-head"><i class="fa-solid fa-graduation-cap"></i> Board Exams 2027</div>
+            <div class="count-sub">Class 10 Board Exam Countdown — stays live and active</div>
           </div>
 
           <div class="count-timers" aria-live="polite">
-            <div class="time-seg"><div class="time-num" id="cd-days"><span class="shimmer" style="width:40px;height:28px;display:inline-block"></span></div><div class="time-label">Days</div></div>
-            <div class="time-seg"><div class="time-num" id="cd-hours"><span class="shimmer" style="width:36px;height:28px;display:inline-block"></span></div><div class="time-label">Hours</div></div>
-            <div class="time-seg"><div class="time-num" id="cd-mins"><span class="shimmer" style="width:30px;height:28px;display:inline-block"></span></div><div class="time-label">Minutes</div></div>
-            <div class="time-seg"><div class="time-num" id="cd-secs"><span class="shimmer" style="width:30px;height:28px;display:inline-block"></span></div><div class="time-label">Seconds</div></div>
+            <div class="time-seg"><div class="time-num" id="cd-days"><span class="shimmer" style="width:32px;height:24px;display:inline-block;border-radius:4px"></span></div><div class="time-label">Days</div></div>
+            <div class="time-seg"><div class="time-num" id="cd-hours"><span class="shimmer" style="width:28px;height:24px;display:inline-block;border-radius:4px"></span></div><div class="time-label">Hours</div></div>
+            <div class="time-seg"><div class="time-num" id="cd-mins"><span class="shimmer" style="width:28px;height:24px;display:inline-block;border-radius:4px"></span></div><div class="time-label">Mins</div></div>
+            <div class="time-seg"><div class="time-num" id="cd-secs"><span class="shimmer" style="width:28px;height:24px;display:inline-block;border-radius:4px"></span></div><div class="time-label">Secs</div></div>
           </div>
 
-          <div class="count-title-mobile">Class 10th Examination</div>
+          <div class="count-title-mobile">WBBSE Class 10 Exam Countdown</div>
         </div>
       </div>
     </div>
 
-    <!-- slider (separate card) -->
-    <div class="slider-wrap card" style="margin-top:12px">
-      <div id="slider" class="slider" aria-roledescription="carousel">
-        <div class="slide"><img src="https://i.ibb.co/d0Jd7Vnf/Whats-App-Image-2025-11-24-at-15-34-16-020cddae.jpg" alt="Class 10 students studying"></div>
-        <div class="slide">
-          <img src="https://i.ibb.co/TB6xm3P3/Whats-App-Image-2025-11-23-at-13-44-23-19a399e1.jpg" alt="Notes and books">
+    <!-- AUTO SLIDER -->
+    <div class="slider-wrap card">
+      <div class="slider-container" id="sliderContainer">
+        <div id="slider" class="slider" aria-roledescription="carousel">
+          <div class="slide"><img src="https://i.ibb.co/d0Jd7Vnf/Whats-App-Image-2025-11-24-at-15-34-16-020cddae.jpg" alt="Class 10 students studying"></div>
+          <div class="slide"><img src="https://i.ibb.co/TB6xm3P3/Whats-App-Image-2025-11-23-at-13-44-23-19a399e1.jpg" alt="Notes and books"></div>
+          <div class="slide"><img src="https://i.ibb.co/hxYRn032/Whats-App-Image-2025-11-24-at-21-05-47-c3cfa8d2.jpg" alt="Students preparing for exams"></div>
         </div>
-        <div class="slide"><img src="https://i.ibb.co/hxYRn032/Whats-App-Image-2025-11-24-at-21-05-47-c3cfa8d2.jpg" alt="Students preparing for exams"></div>
       </div>
-
-      <div class="slider-dots" id="sliderDots" aria-hidden="false"></div>
+      <div class="slider-dots" id="sliderDots"></div>
     </div>
 
+    <!-- CONTENT GRID -->
     <div class="grid">
       <main>
-        <!-- Latest -->
-        <section id="latest" class="card" aria-labelledby="latestTitle" style="margin-top:18px">
-          <h2 id="latestTitle">Latest Updates</h2>
+        <!-- LATEST DYNAMIC UPDATES (Revamped Layout) -->
+        <section id="latest" class="card" aria-labelledby="latestTitle">
+          <h2 id="latestTitle"><i class="fa-solid fa-bullhorn"></i> Latest Dynamic Updates</h2>
           <div class="updates-list" id="updatesList" aria-live="polite"></div>
-          <div style="margin-top:8px;text-align:right">
-            <a href="latest.html?all=1" style="font-size:0.8rem;color:var(--accent-2);text-decoration:none;opacity:0.9">See all updates ↗</a>
+          <div style="margin-top:14px;text-align:right">
+            <a href="latest.html?all=1" style="font-size:0.85rem;color:var(--accent-blue);text-decoration:none;font-weight:700">Explore Complete Updates ↗</a>
           </div>
         </section>
 
-        <!-- Books -->
-        <section id="books" class="card" style="margin-top:18px">
-          <h2>Books & Material</h2>
-          <div class="muted">Free PDFs, revision notes and sample papers</div>
+        <!-- Books Area -->
+        <section id="books" class="card" style="margin-top:20px">
+          <h2><i class="fa-solid fa-book-open"></i> Curated Books & Materials</h2>
+          <div class="muted" style="margin-bottom:10px">Free high-quality PDF guides, structural formulas and revision materials.</div>
           <div class="books-tabs" id="booksTabs">
             <button class="books-tab active" data-tab="language">Language</button>
             <button class="books-tab" data-tab="compulsory">Compulsory</button>
             <button class="books-tab" data-tab="special">Special</button>
           </div>
-          <div style="margin-top:10px" id="booksArea"></div>
+          <div class="books-grid" id="booksArea"></div>
         </section>
 
-        <!-- Tests -->
-<section id="tests" class="card" style="margin-top:18px">
-  <h2>Tests & Practice</h2>
-  <div class="muted">Weekly timed tests, instant score & leaderboards</div>
-
-  <div class="feature-grid" style="margin-top:12px">
-
-    <!-- Practice Test -->
-    <button class="feature"
-      onclick="window.location.href='/practice-test.html'">
-      Take Practice Test
-    </button>
-
- <button class="feature" onclick="window.location.href='livetest.html'">
-  Join Live Test
-</button>
-
-
-   <!-- Submit Answer Sheet -->
-<button class="feature"
-  onclick="window.location.href='https://form.svhrt.com/692322f80a0bd8c6f8ad7ca0'">
-  Submit Answer Sheet
-</button>
-
-
-    <!-- Topic Quizzes -->
-    <button class="feature"
-      onclick="window.location.href='/topquize.html'">
-      Topic Quizzes
-    </button>
-
-  </div>
-</section>
-
+        <!-- Assessments -->
+        <section id="tests" class="card" style="margin-top:20px">
+          <h2><i class="fa-solid fa-file-signature"></i> Online Assessments</h2>
+          <div class="muted">Check your accuracy level with weekly structured practice exams and live quizzes.</div>
+          <div class="feature-grid">
+            <button class="feature" id="btnPractice">
+              <i class="fa-solid fa-pen-clip"></i>
+              <span>Take Practice Test</span>
+            </button>
+            <button class="feature" id="btnLiveTest">
+              <i class="fa-solid fa-tower-broadcast"></i>
+              <span>Join Live Test</span>
+            </button>
+            <button class="feature" id="btnSubmit">
+              <i class="fa-solid fa-file-arrow-up"></i>
+              <span>Submit Answer Sheet</span>
+            </button>
+            <button class="feature" id="btnQuiz">
+              <i class="fa-solid fa-ranking-star"></i>
+              <span>Topic Quizzes</span>
+            </button>
+          </div>
+        </section>
 
         <!-- Contributors -->
-        <section id="contributors" class="card" style="margin-top:18px">
-          <h2>Top Contributors</h2>
+        <section id="contributors" class="card" style="margin-top:20px">
+          <h2><i class="fa-solid fa-medal"></i> Top Contributors</h2>
           <div id="contributorsList" style="margin-top:10px; display:flex;flex-direction:column; gap:8px"></div>
         </section>
       </main>
 
       <aside>
         <div class="card">
-          <h2>Stats</h2>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
-            <div style="display:flex;justify-content:space-between"><div class="muted">Members</div><div id="statMembers">0+</div></div>
-            <div style="display:flex;justify-content:space-between"><div class="muted">Helped</div><div id="statHelped">0+</div></div>
-            <div style="display:flex;justify-content:space-between"><div class="muted">PDFs</div><div id="statPdf">0+</div></div>
+          <h2><i class="fa-solid fa-chart-simple"></i> Platform Stats</h2>
+          <div style="display:flex;flex-direction:column;margin-top:10px">
+            <div class="stat-row">
+              <span class="muted">Active Students</span>
+              <span id="statMembers" class="stat-val">0+</span>
+            </div>
+            <div class="stat-row">
+              <span class="muted">Assisted Daily</span>
+              <span id="statHelped" class="stat-val">0+</span>
+            </div>
+            <div class="stat-row">
+              <span class="muted">Free Study PDFs</span>
+              <span id="statPdf" class="stat-val">0+</span>
+            </div>
           </div>
         </div>
       </aside>
     </div>
 
-    <footer style="text-align:center;color:var(--muted);margin-top:18px;padding:12px"> 2025 WB Students Group · Class 10 · IYR</footer>
+    <footer style="text-align:center;color:var(--muted);margin-top:48px;padding:24px;font-size:0.9rem;border-top:1px solid var(--border-color)"> 
+      © 2027 WB Students Group · Class 10 Portal · Founders: Yusuf Khan · Since 09-09-2024
+    </footer>
   </div>
 
-  <!-- side menu overlay (opens via right-edge pull gesture) -->
+  <!-- FLOATING WHATSAPP AD WIDGET WITH CLOSE BUTTON (Bottom-Left) -->
+  <div id="floatAdContainer" class="float-ad-container">
+    <button class="close-float-btn" id="closeAdBtn" title="Dismiss Widget"><i class="fa-solid fa-xmark"></i></button>
+    <a id="floatAd" href="#" target="_blank" class="float-ad-widget" aria-label="Join WhatsApp Group">
+      <div class="float-icon">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+      <div class="float-info">
+        <div class="float-title">Join Study Support</div>
+        <div class="float-desc">Live exam discussions & PDFs</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- SHARA AI CLIENT WIDGET (Bottom-Right) -->
+  <div id="aiLauncher" class="ai-launcher" title="Chat with Shara AI">
+    <i class="fa-solid fa-robot"></i>
+  </div>
+
+  <div id="aiChatWindow" class="ai-chat-window">
+    <div class="chat-header">
+      <div class="chat-profile">
+        <div class="chat-avatar"><i class="fa-solid fa-brain"></i></div>
+        <div class="chat-info">
+          <span class="chat-name">Shara AI</span>
+          <span class="chat-status">Active Helper</span>
+        </div>
+      </div>
+      <button class="close-chat-btn" id="closeChatBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    
+    <!-- Messages Scrollbox -->
+    <div class="chat-messages" id="chatMessages">
+      <div class="message msg-bot">
+        Hello! Main Shara hoon, aapki personalized AI Assistant. Mujhe <strong>Yusuf Khan</strong> ne banaya hai. Main aapko Class 10 (Madhymik) board preparation notes aur resources me guide karungi. Aap mujhse mere creator ke baare me ya study materials ke baare me pooch sakte hain!
+      </div>
+    </div>
+
+    <!-- Quick Sugesstion Chips -->
+    <div class="chat-suggestions">
+      <div class="suggest-chip" onclick="askShara('Who built this website?')">Who built this website?</div>
+      <div class="suggest-chip" onclick="askShara('Maths resources')">Maths resources</div>
+      <div class="suggest-chip" onclick="askShara('English guides')">English guides</div>
+    </div>
+
+    <!-- Send Input Bar -->
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type your query..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+      <button class="send-chat-btn" onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- GLOBAL WARNING TOAST CONTAINER -->
+  <div class="toast-container" aria-live="assertive">
+    <div id="linkToast" class="toast">
+      <i class="fa-solid fa-circle-info"></i>
+      <span id="toastMsg">Updating link... Please try again later!</span>
+    </div>
+  </div>
+
+  <!-- MOBILE SLIDING DRAWER -->
   <div id="sideMenuOverlay" class="side-menu-overlay" aria-hidden="true">
-    <nav id="sideMenuPanel" class="side-menu-panel" aria-label="Quick navigation">
-      <div class="side-menu-header">Navigate</div>
-      <a href="index.html#home" class="side-menu-link"><span class="icon">🏠</span><span>Home</span></a>
-      <a href="latest.html?all=1" class="side-menu-link"><span class="icon">🔔</span><span>Latest updates</span></a>
-      <a href="books.html" class="side-menu-link"><span class="icon">📚</span><span>Books & material</span></a>
-      <a href="tests.html" class="side-menu-link"><span class="icon">📝</span><span>Tests & practice</span></a>
-      <a href="community.html" class="side-menu-link"><span class="icon">👥</span><span>Community & stats</span></a>
+    <nav id="sideMenuPanel" class="side-menu-panel" aria-label="Quick Navigation">
+      <div class="side-menu-header">Quick Actions</div>
+      <a href="#home" class="side-menu-link"><span class="icon"><i class="fa-solid fa-house"></i></span><span>Home Dashboard</span></a>
+      <a href="#latest" class="side-menu-link"><span class="icon"><i class="fa-solid fa-bullhorn"></i></span><span>Latest Updates</span></a>
+      <a href="#books" class="side-menu-link"><span class="icon"><i class="fa-solid fa-book-open"></i></span><span>Materials & PDF</span></a>
+      <a href="#tests" class="side-menu-link"><span class="icon"><i class="fa-solid fa-file-signature"></i></span><span>Assessments & tests</span></a>
+      <div style="margin-top: auto; padding: 16px; border-top: 1px solid var(--border-color)">
+        <div style="font-size:0.75rem; color:var(--muted)">Founder & Admin</div>
+        <div style="font-size:1rem; font-weight:800; color:#fff; margin-top:2px">Yusuf Khan</div>
+      </div>
     </nav>
   </div>
 
 <script>
-/* -----------------------------
-   SITE DATA (edit this block)
-   ----------------------------- */
-const SITE = {
+const DATABASE = {
+  whatsappGroupLink: "https://wa.me/919297660041?text=Hello%20Yusuf%20Sir%2C%20mujhe%20Class%2010%20WB%20Students%20Group%20join%20karna%20hai.",
   stats: { members: 930, helped: 2400, pdfs: 420 },
+  
+  // Revamped Latest Updates Data Structure (With categories and direct references)
   updates: [
-    {date:"2025-11-19", html: 'English sample paper uploaded. <a href="#">Open</a>'},
-    {date:"2025-11-12", html: 'Schedule for weekly tests announced — Sundays. <a href="#">Open</a>'},
-    {date:"2025-10-30", html: 'Revision notes for Mathematics uploaded. <a href="#">Open</a>'}
+    {date:"2025-11-19", category:"NewRelease", txt: 'Fresh English sample question paper has been fully compiled and added.', actionLink:'#books'},
+    {date:"2025-11-12", category:"Notice", txt: 'Weekly evaluation schedules announced. Tests will occur every Sunday morning.', actionLink:'#tests'},
+    {date:"2025-10-30", category:"Syllabus", txt: 'Comprehensive formula cheatsheets released for Mathematics Board exam syllabus.', actionLink:'#books'}
   ],
+
   books: {
     language: [
-      {title:'English Guide Class 10', link:'#'},
-      {title:'Bengali Second Language Notes', link:'#'}
+      { title: 'English Guide Class 10', driveLink: 'https://drive.google.com/your-english-pdf-link' },
+      { title: 'Bengali Second Language Notes', driveLink: '#' } 
     ],
     compulsory: [
-      {title:'Mathematics Class 10 - Notes', link:'#'},
-      {title:'Science Revision Pack', link:'#'}
+      { title: 'Mathematics Formula Sheets', driveLink: 'https://drive.google.com/your-maths-pdf-link' },
+      { title: 'Physical Science Concept Maps', driveLink: '#' } 
     ],
     special: [
-      {title:'Important Formula Sheet (All Subjects)', link:'#'},
-      {title:'Last 10 Years Question Compilation', link:'#'}
+      { title: 'Last 10 Years WBBSE Compilations', driveLink: '#' } 
     ]
   },
-  contributors: [] // <-- names removed
+
+  tests: {
+    practiceTestUrl: "/practice-test.html",
+    liveTestUrl: "livetest.html",
+    submitSheetUrl: "https://form.svhrt.com/692322f80a0bd8c6f8ad7ca0",
+    topicQuizUrl: "/topquize.html"
+  },
+
+  contributors: []
 };
 
 let BOOKS_ACTIVE = 'language';
 
-/* -----------------------------
-   Utilities & UI rendering
-   ----------------------------- */
 function q(sel, el=document) { return el.querySelector(sel); }
 function qAll(sel, el=document) { return Array.from(el.querySelectorAll(sel)); }
 
 function renderStats(){
-  document.getElementById('statMembers').textContent = SITE.stats.members + '+';
-  document.getElementById('statHelped').textContent = SITE.stats.helped + '+';
-  document.getElementById('statPdf').textContent = SITE.stats.pdfs + '+';
+  document.getElementById('statMembers').textContent = DATABASE.stats.members + '+';
+  document.getElementById('statHelped').textContent = DATABASE.stats.helped + '+';
+  document.getElementById('statPdf').textContent = DATABASE.stats.pdfs + '+';
 }
+
+function showToast(message) {
+  const toast = document.getElementById('linkToast');
+  document.getElementById('toastMsg').textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4000);
+}
+
+function handleActionLink(url, actionText = "Document") {
+  if (!url || url === '#' || url.includes('your-') || url.trim() === '') {
+    showToast(`${actionText} loading & updating... Coming Soon!`);
+    return false;
+  }
+  window.open(url, '_blank');
+  return true;
+}
+
+// Render Premium Revamped updates
 function renderUpdates(){
   const list = document.getElementById('updatesList');
   list.innerHTML = '';
-  SITE.updates.forEach((u, idx)=>{
+  DATABASE.updates.forEach((u)=>{
     const d = new Date(u.date);
     const fmt = d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
-    const row = document.createElement('div');
-    row.className = 'update-row';
-    row.innerHTML = `<div class="update-date">${fmt}</div><div class="update-txt">${u.html}</div>`;
-    // make whole row open detail page in same tab
-    row.style.cursor = 'pointer';
-    row.addEventListener('click', ()=>{
-      location.href = `latest.html?id=${idx}`;
-    });
-
-    // but keep inner links working for their own href (not the detail page)
-    row.querySelectorAll('a').forEach(a=>{
-      a.addEventListener('click', e=>{
-        e.stopPropagation();
-      });
-    });
-    list.appendChild(row);
+    const card = document.createElement('div');
+    card.className = 'update-card-new';
+    card.innerHTML = `
+      <div class="pulse-indicator"></div>
+      <div class="update-details">
+        <div class="update-tag-row">
+          <span class="update-date-badge">${fmt}</span>
+          <span class="update-category-tag">#${u.category}</span>
+        </div>
+        <div class="update-text-main">${u.txt} <a href="${u.actionLink}">Open Now</a></div>
+      </div>
+    `;
+    list.appendChild(card);
   });
 }
+
+// Render Books
 function renderBooks(){
   const area = document.getElementById('booksArea');
   area.innerHTML = '';
-  const list = SITE.books[BOOKS_ACTIVE] || [];
+  const list = DATABASE.books[BOOKS_ACTIVE] || [];
+  
   if(!list.length){
     const empty = document.createElement('div');
     empty.className = 'muted';
-    empty.textContent = 'No material added yet.';
+    empty.style.gridColumn = '1/-1';
+    empty.style.textAlign = 'center';
+    empty.style.padding = '20px';
+    empty.textContent = 'Resources are currently being updated.';
     area.appendChild(empty);
     return;
   }
 
   list.forEach(b=>{
-    const el = document.createElement('div');
-    el.className = 'card book-card';
-    el.style.marginBottom='10px';
-    el.innerHTML = `<div class="book-row">
-                      <div class="book-meta">
-                        <strong>${b.title}</strong>
-                        <small>Free PDF · Instant open</small>
-                      </div>
-                      <a class="book-open" href="${b.link}" target="_blank">
-                        <span>Open PDF</span>
-                        <span>↗</span>
-                      </a>
-                    </div>`;
-    area.appendChild(el);
-    // trigger animation
+    const card = document.createElement('div');
+    card.className = 'book-card';
+    card.innerHTML = `
+      <div class="book-details">
+        <div class="book-shelf-icon"><i class="fa-solid fa-file-pdf"></i></div>
+        <div class="book-meta">
+          <strong>${b.title}</strong>
+        </div>
+      </div>
+      <a class="book-open-btn" href="#" aria-label="Open PDF Document">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    `;
+
+    card.querySelector('.book-open-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      handleActionLink(b.driveLink, b.title);
+    });
+
+    card.addEventListener('touchstart', () => {
+      card.style.transform = 'scale(0.97)';
+    }, {passive: true});
+    card.addEventListener('touchend', () => {
+      card.style.transform = '';
+    }, {passive: true});
+
+    area.appendChild(card);
     requestAnimationFrame(()=>{
-      el.classList.add('show');
+      card.classList.add('show');
     });
   });
 }
+
 function renderContrib(){
   const c = document.getElementById('contributorsList');
   c.innerHTML = '';
-  if (!SITE.contributors.length) {
+  if (!DATABASE.contributors.length) {
     const el = document.createElement('div');
-    el.className = 'update-row';
+    el.className = 'update-card-new';
     el.style.justifyContent = 'center';
     el.style.fontWeight = '700';
-    el.style.fontSize = '1rem';
     el.style.color = 'var(--muted)';
-    el.textContent = 'Updated soon';
+    el.innerHTML = '<span style="font-size:0.9rem">Weekly Updates Coming Soon! Stay Active.</span>';
     c.appendChild(el);
     return;
   }
-  const colors = [
-    'linear-gradient(135deg,#ffd700 60%,#fffbe6 100%)', // Gold
-    'linear-gradient(135deg,#c0c0c0 60%,#f8f8f8 100%)', // Silver
-    'linear-gradient(135deg,#cd7f32 60%,#fbeee6 100%)'  // Bronze
-  ];
-  SITE.contributors.forEach((name,i)=>{
-    const badge = i < 3
-      ? `<div style="
-            width:44px;height:44px;border-radius:50%;
-            display:flex;align-items:center;justify-content:center;
-            font-size:1.3rem;font-weight:900;
-            background:${colors[i]};
-            box-shadow:0 0 18px ${i===0?'#ffd70080':i===1?'#c0c0c080':'#cd7f3280'},0 0 0 4px #fffbe6a0;
-            animation:badgeGlow 1.2s infinite alternate;
-            color:#222;
-        ">${i+1}</div>`
-      : `<div style="font-weight:900;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center">${i+1}</div>`;
-    const el = document.createElement('div'); el.className='update-row';
-    el.style.alignItems='center';
-    el.style.animation = 'fadeInUp .7s cubic-bezier(.2,.9,.3,1)';
-    el.innerHTML = `
-      <div style="min-width:44px;">
-        ${badge}
-      </div>
-      <div style="margin-left:10px;font-weight:700">${name}</div>
-    `;
-    c.appendChild(el);
-  });
 }
 
-/* init render */
+function setupUXInteractions(){
+  // WA Floating Badge Setting with Close/Hide logic
+  const floatContainer = document.getElementById('floatAdContainer');
+  const floatAd = document.getElementById('floatAd');
+  const closeAdBtn = document.getElementById('closeAdBtn');
+
+  if(floatAd){
+    floatAd.href = DATABASE.whatsappGroupLink;
+    const isDismissed = sessionStorage.getItem('dismissWAWidget');
+    if(!isDismissed){
+      setTimeout(() => {
+        floatContainer.classList.add('visible');
+      }, 2500);
+    }
+  }
+
+  if(closeAdBtn){
+    closeAdBtn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      floatContainer.classList.remove('visible');
+      sessionStorage.setItem('dismissWAWidget', 'true'); // Hide for current browsing session
+    });
+  }
+
+  // Action links protection bindings
+  const binds = [
+    { id: 'btnPractice', url: DATABASE.tests.practiceTestUrl, name: 'Practice Exam Portal' },
+    { id: 'btnLiveTest', url: DATABASE.tests.liveTestUrl, name: 'Live Assessment Room' },
+    { id: 'btnSubmit', url: DATABASE.tests.submitSheetUrl, name: 'Submit Form Portal' },
+    { id: 'btnQuiz', url: DATABASE.tests.topicQuizUrl, name: 'Topic Quiz Zone' }
+  ];
+
+  binds.forEach(item => {
+    const el = document.getElementById(item.id);
+    if(el){
+      el.addEventListener('click', () => {
+        handleActionLink(item.url, item.name);
+      });
+    }
+  });
+
+  // Chat window toggler
+  const aiLauncher = document.getElementById('aiLauncher');
+  const chatWin = document.getElementById('aiChatWindow');
+  const closeChatBtn = document.getElementById('closeChatBtn');
+
+  if(aiLauncher && chatWin){
+    aiLauncher.addEventListener('click', ()=>{
+      chatWin.classList.toggle('open');
+    });
+  }
+  if(closeChatBtn && chatWin){
+    closeChatBtn.addEventListener('click', ()=>{
+      chatWin.classList.remove('open');
+    });
+  }
+}
+
+// Shara AI Chatbot Core Response Engine (100% Client-Side Private Logic)
+function sendChatMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+
+  appendMessage(text, 'user');
+  input.value = '';
+
+  setTimeout(() => {
+    const reply = getSharaResponse(text);
+    appendMessage(reply, 'bot');
+  }, 600);
+}
+
+function askShara(presetText) {
+  appendMessage(presetText, 'user');
+  setTimeout(() => {
+    const reply = getSharaResponse(presetText);
+    appendMessage(reply, 'bot');
+  }, 500);
+}
+
+function appendMessage(txt, sender) {
+  const box = document.getElementById('chatMessages');
+  const msg = document.createElement('div');
+  msg.className = `message msg-${sender}`;
+  msg.innerHTML = txt;
+  box.appendChild(msg);
+  box.scrollTop = box.scrollHeight;
+}
+
+// Protected Knowledge boundaries of Shara AI (Yusuf Khan, IYR, and Class 10 Syllabus)
+function getSharaResponse(q) {
+  const query = q.toLowerCase();
+  
+  if (query.includes('creator') || query.includes('yusuf') || query.includes('khan') || query.includes('built') || query.includes('made') || query.includes('owner') || query.includes('founder')) {
+    return `Mujhe <strong>Yusuf Khan</strong> ne banaya hai, jo Kolkata ke rehne wale hain aur <strong>Indian Youth Revolution (IYR)</strong> ke Founder hain. Unka aim bohot simple hai - wo chahte hain ki har youth desh ki progress aur politics me actively participate kare kyunki yeh hamara rights hai! Unhone hi 09-09-2024 ko WB Students Group banaya tha taaki Urdu, Hindi, aur English medium ke students ko free support mil sake.`;
+  }
+  
+  if (query.includes('contact') || query.includes('number') || query.includes('phone') || query.includes('email') || query.includes('live') || query.includes('address')) {
+    return `Sorry, main Yusuf Khan ke isse zyada personal details share nahi kar sakti! Unhone dynamic support ke liye direct WhatsApp link set ki hai. Aap unse support ke liye left-corner ke WhatsApp Floating Capsule par click karke jud sakte hain.`;
+  }
+
+  if (query.includes('iyr') || query.includes('indian youth revolution')) {
+    return `<strong>Indian Youth Revolution (IYR)</strong> ki shuruaat Yusuf Khan dwara ki gayi thi, jiska uddeshya youth me ek revolution lana hai aur sabko unke rights ke prati aware banana hai.`;
+  }
+
+  if (query.includes('math') || query.includes('formula') || query.includes('compulsory')) {
+    return `Mathematics section ke notes available hain! Aap home page par <strong>"Compulsory"</strong> tab par click karke select Mathematics PDF link se access kar sakte hain.`;
+  }
+
+  if (query.includes('english') || query.includes('bengali') || query.includes('language')) {
+    return `English and Bengali guides humare <strong>"Language"</strong> tab me available hain. Language folder click karke high-end PDF download karein!`;
+  }
+
+  if (query.includes('test') || query.includes('quiz') || query.includes('exam') || query.includes('practice')) {
+    return `Website par hamare paas active online dynamic tests hain. Aap home screen ke <strong>"Online Assessments"</strong> section me jaakar live aur practice exams select kar sakte hain!`;
+  }
+
+  if (query.includes('hello') || query.includes('hi') || query.includes('hey')) {
+    return `Hello! Main Shara hoon. Board preparation, PDF resources, ya humare founder Yusuf Khan ke baare me poochne ke liye click karein!`;
+  }
+
+  return `Mujhe is baare me limited details pata hain. Lekin main aapki Class 10th exams preparation, download study materials, aur platform updates se judi cheezon me help kar sakti hoon!`;
+}
+
+// Init execution
 renderStats();
 renderUpdates();
 renderBooks();
 renderContrib();
+setupUXInteractions();
 
-// -----------------------------
-// Side menu logic (button + swipe)
-// -----------------------------
+// Books Category Tab switcher
+(function initBooksTabs(){
+  const tabsWrap = document.getElementById('booksTabs');
+  if(!tabsWrap) return;
+  const tabs = Array.from(tabsWrap.querySelectorAll('.books-tab'));
+  tabs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const key = btn.getAttribute('data-tab');
+      if(!key || !DATABASE.books[key]) return;
+      BOOKS_ACTIVE = key;
+      tabs.forEach(b=> b.classList.toggle('active', b === btn));
+      renderBooks();
+    });
+  });
+})();
+
+// Mobile Drawer Navigation Toggles
 (function initSideMenu(){
   const overlay = document.getElementById('sideMenuOverlay');
   const panel = document.getElementById('sideMenuPanel');
@@ -812,89 +1455,104 @@ renderContrib();
   function openMenu(){
     menuOpen = true;
     overlay.classList.add('open');
-    panel.classList.add('open');
     overlay.setAttribute('aria-hidden','false');
   }
   function closeMenu(){
     menuOpen = false;
     overlay.classList.remove('open');
-    panel.classList.remove('open');
     overlay.setAttribute('aria-hidden','true');
   }
 
   if(menuBtn){
-    menuBtn.addEventListener('click', ()=>{
+    menuBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
       menuOpen ? closeMenu() : openMenu();
     });
   }
 
   overlay.addEventListener('click', (e)=>{
-    if(e.target === overlay) closeMenu();
+    if(e.target === overlay || e.target.closest('.side-menu-link')) closeMenu();
   });
-
-  // minimal right-edge swipe for touch devices
-  let startX = 0;
-  let tracking = false;
-  let mode = null; // 'open' or 'close'
-
-  function onStart(x){
-    const w = window.innerWidth;
-    if(!menuOpen && x > w - 24){
-      tracking = true; mode = 'open'; startX = x;
-    }else if(menuOpen && x < 32){
-      tracking = true; mode = 'close'; startX = x;
-    }
-  }
-  function onEnd(x){
-    if(!tracking) return;
-    const dx = x - startX;
-    if(mode === 'open' && dx < -40) openMenu();
-    if(mode === 'close' && dx > 40) closeMenu();
-    tracking = false; mode = null;
-  }
-
-  if('PointerEvent' in window){
-    window.addEventListener('pointerdown', e=> onStart(e.clientX), {passive:true});
-    window.addEventListener('pointerup',   e=> onEnd(e.clientX),   {passive:true});
-  }else{
-    window.addEventListener('touchstart', e=>{
-      if(!e.touches[0]) return; onStart(e.touches[0].clientX);
-    }, {passive:true});
-    window.addEventListener('touchend', e=>{
-      if(!e.changedTouches[0]) return; onEnd(e.changedTouches[0].clientX);
-    }, {passive:true});
-  }
 })();
 
-// books tabs wiring
-(function initBooksTabs(){
-  const tabsWrap = document.getElementById('booksTabs');
-  if(!tabsWrap) return;
-  const tabs = Array.from(tabsWrap.querySelectorAll('.books-tab'));
-  tabs.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const key = btn.getAttribute('data-tab');
-      if(!key || !SITE.books[key]) return;
-      BOOKS_ACTIVE = key;
-      tabs.forEach(b=> b.classList.toggle('active', b === btn));
-      renderBooks();
+// Auto Play Carousel
+(function initSlider() {
+  const slider = document.getElementById('slider');
+  const slides = qAll('.slide');
+  const dotsContainer = document.getElementById('sliderDots');
+  if (!slider || !slides.length) return;
+
+  let currentIndex = 0;
+  let slideInterval;
+
+  dotsContainer.innerHTML = '';
+  slides.forEach((_, idx) => {
+    const dot = document.createElement('div');
+    dot.className = `dot ${idx === 0 ? 'active' : ''}`;
+    dot.addEventListener('click', () => {
+      goToSlide(idx);
+      resetAutoplay();
     });
+    dotsContainer.appendChild(dot);
   });
+
+  const dots = qAll('.dot', dotsContainer);
+
+  function updateSliderPosition() {
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateSliderPosition();
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSliderPosition();
+  }
+
+  function startAutoplay() {
+    slideInterval = setInterval(nextSlide, 5000); 
+  }
+
+  function resetAutoplay() {
+    clearInterval(slideInterval);
+    startAutoplay();
+  }
+
+  let startX = 0;
+  slider.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    clearInterval(slideInterval);
+  }, {passive: true});
+
+  slider.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        currentIndex = (currentIndex + 1) % slides.length;
+      } else {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      }
+      updateSliderPosition();
+    }
+    startAutoplay();
+  }, {passive: true});
+
+  startAutoplay();
 })();
 
-/* -----------------------------
-   Countdown logic (target: 2 Feb 2026 IST)
-   - Try worldtimeapi first (Asia/Kolkata). If blocked, fallback to systemclock.
-   - No UI debug. Show shimmer until first real tick applied.
-   ----------------------------- */
+// Active Countdown Setup (Target: 15-Feb-2027)
 (function initCountdown(){
   const ids = { d: q('#cd-days'), h: q('#cd-hours'), m: q('#cd-mins'), s: q('#cd-secs') };
-  const targetStr = "2026-02-02T00:00:00+05:30";
-  const targetInstant = new Date(targetStr).getTime();
+  const targetInstant = new Date("2027-02-15T10:45:00+05:30").getTime();
+  let timeOffset = 0; 
 
-  // helper to set values
-  function setVals(msNow){
-    const diff = targetInstant - msNow;
+  function setVals(currentTime){
+    const diff = targetInstant - currentTime;
     if(diff <= 0){
       ids.d.innerHTML = '00'; ids.h.innerHTML='00'; ids.m.innerHTML='00'; ids.s.innerHTML='00';
       removeShimmer();
@@ -905,6 +1563,7 @@ renderContrib();
     const hours = Math.floor(r / (60*60*1000)); r %= (60*60*1000);
     const mins = Math.floor(r / (60*1000)); r %= (60*1000);
     const secs = Math.floor(r / 1000);
+
     ids.d.textContent = String(days).padStart(2,'0');
     ids.h.textContent = String(hours).padStart(2,'0');
     ids.m.textContent = String(mins).padStart(2,'0');
@@ -926,195 +1585,27 @@ renderContrib();
         const res = await fetch(url, {cache:'no-store'});
         if(!res.ok) continue;
         const j = await res.json();
-        // extract datetime robustly
         const maybe = j.datetime || j.dateTime || j.currentLocalTime || j.dateTimeUTC;
         if(!maybe) continue;
-        const now = new Date(maybe);
-        if(isNaN(now.getTime())) continue;
-        return now.getTime();
-      }catch(e){ /* ignore */ }
+        const apiTime = new Date(maybe).getTime();
+        timeOffset = apiTime - Date.now();
+        return;
+      }catch(e){}
     }
-    return null;
+  }
+
+  function startTicking() {
+    setInterval(() => {
+      setVals(Date.now() + timeOffset);
+    }, 1000);
   }
 
   (async function start(){
-    // 1) Start immediately with local clock so timer ticks even if API is slow
-    let intervalId = setInterval(()=> setVals(Date.now()), 1000);
     setVals(Date.now());
-
-    // 2) Try to refine using API time in background
-    const apiNow = await tryApis();
-    if(apiNow){
-      const baseline = apiNow;
-      const clientStart = Date.now();
-      if(intervalId) clearInterval(intervalId);
-      intervalId = setInterval(()=> {
-        const nowMs = baseline + (Date.now() - clientStart);
-        setVals(nowMs);
-      }, 1000);
-    }
+    startTicking();
+    await tryApis();
   })();
-})();
-
-/* -----------------------------
-   Slider with autoplay + swipe + drag
-   ----------------------------- */
-(function initSlider(){
-  const slider = document.getElementById('slider');
-  const slides = qAll('.slide', slider);
-  const dotsEl = document.getElementById('sliderDots');
-  let index = 0;
-  let autoplay = true;
-  let autoplayInterval = 4500;
-  let timer;
-
-  // create dots
-  slides.forEach((s, i)=>{
-    const dot = document.createElement('div'); dot.className='dot'; if(i===0) dot.classList.add('active');
-    dot.addEventListener('click', ()=> go(i));
-    dotsEl.appendChild(dot);
-  });
-  const dots = qAll('.dot', dotsEl);
-
-  // FIX: Set slider and slide widths
-  function setSliderWidth() {
-    slider.style.width = (slides.length * 100) + '%';
-    slides.forEach(s => s.style.width = (100 / slides.length) + '%');
-  }
-  setSliderWidth();
-
-  function update(){
-    slider.style.transform = `translateX(-${index * (100 / slides.length)}%)`;
-    dots.forEach((d, i)=> d.classList.toggle('active', i===index));
-  }
-  function next(){ index = (index + 1) % slides.length; update(); }
-  function prev(){ index = (index - 1 + slides.length) % slides.length; update(); }
-  function go(i){ index = i; update(); resetTimer(); }
-
-  // autoplay
-  function startTimer(){ if(timer) clearInterval(timer); timer = setInterval(()=> next(), autoplayInterval); }
-  function resetTimer(){ if(autoplay) startTimer(); }
-  if(autoplay) startTimer();
-
-  // touch & mouse drag
-  let startX = 0, isDown=false;
-
-  function dragStart(clientX){
-    isDown = true;
-    startX = clientX;
-    slider.style.transition = 'none';
-    if(timer) clearInterval(timer);
-  }
-  function dragMove(clientX){
-    if(!isDown) return;
-    const dx = clientX - startX;
-    slider.style.transform = `translateX(calc(-${index*100}% + ${dx}px))`;
-  }
-  function dragEnd(clientX){
-    if(!isDown) return;
-    isDown = false;
-    slider.style.transition = '';
-    const dx = clientX - startX;
-    if(Math.abs(dx) > 60){ dx < 0 ? next() : prev(); } else { update(); }
-    resetTimer();
-  }
-
-  if('PointerEvent' in window){
-    slider.addEventListener('pointerdown', e => dragStart(e.clientX), {passive:true});
-    window.addEventListener('pointermove', e => dragMove(e.clientX), {passive:true});
-    window.addEventListener('pointerup',   e => dragEnd(e.clientX), {passive:true});
-  } else {
-    // touch fallback
-    slider.addEventListener('touchstart', e => {
-      if(!e.touches[0]) return; dragStart(e.touches[0].clientX);
-    }, {passive:true});
-    slider.addEventListener('touchmove', e => {
-      if(!e.touches[0]) return; dragMove(e.touches[0].clientX);
-    }, {passive:true});
-    slider.addEventListener('touchend', e => {
-      if(!e.changedTouches[0]) return; dragEnd(e.changedTouches[0].clientX);
-    }, {passive:true});
-    // mouse fallback
-    slider.addEventListener('mousedown', e => dragStart(e.clientX));
-    window.addEventListener('mousemove', e => dragMove(e.clientX));
-    window.addEventListener('mouseup',   e => dragEnd(e.clientX));
-  }
-
-  // prevent image dragging default
-  qAll('img', slider).forEach(img => img.addEventListener('dragstart', e=> e.preventDefault()));
-
-  // keyboard left/right
-  window.addEventListener('keydown', (e)=> {
-    if(e.key === 'ArrowLeft') { prev(); resetTimer(); }
-    if(e.key === 'ArrowRight'){ next(); resetTimer(); }
-  });
-
-  // ensure slider shows correctly on resize
-  window.addEventListener('resize', setSliderWidth);
-  update();
-})();
-
-/* -----------------------------
-   small UI helpers: reveal on scroll
-   ----------------------------- */
-(function initReveal(){
-  const items = document.querySelectorAll('.card, .update-row, .feature, .time-seg');
-  const io = new IntersectionObserver((entries, obs)=>{
-    entries.forEach(en=>{
-      if(en.isIntersecting){ en.target.style.transform='translateY(0)'; en.target.style.opacity=1; en.target.style.transition='all 520ms var(--ease)'; obs.unobserve(en.target); }
-    });
-  }, {threshold:0.08});
-  items.forEach(it => { it.style.opacity=0; it.style.transform='translateY(10px)'; io.observe(it); });
-})();
-
-/* -----------------------------
-   small polish: top notice dismiss
-   ----------------------------- */
-(function initTopNotice(){
-  const key = 'wb_premium_notice_closed';
-  const top = document.getElementById('topNotice');
-  const close = document.querySelector('.notice-close');
-  if(localStorage.getItem(key) === '1' && top) top.style.display='none';
-  if(close) close.addEventListener('click', ()=> { if(top){ top.style.opacity=0; setTimeout(()=> top.style.display='none',300); } try{ localStorage.setItem(key,'1'); }catch(e){} });
-})();
-
-(function topSlider(){
-  const track = document.getElementById('topTrack');
-  if(!track) return;
-  const panels = Array.from(track.children);
-  if(!panels.length) return;
-  let idx = 0;
-  const gap = 18;
-  const panelWidth = ()=> panels[0].offsetWidth + gap;
-  function go(i){ idx = Math.max(0, Math.min(i, panels.length - 1)); track.style.transition = 'transform .42s cubic-bezier(.2,.9,.25,1)'; track.style.transform = `translateX(-${idx * panelWidth()}px)`; }
-
-  // Only enable swipe on mobile
-  const slider = document.getElementById('topSlider');
-  if(!slider) return;
-  let isDown = false, startX = 0, latestDx = 0, rafId = null;
-  function tick(){ const x = -idx * panelWidth() + latestDx; track.style.transform = `translateX(${x}px)`; rafId = null; }
-  slider.addEventListener('pointerdown', e=>{
-    if(window.innerWidth > 700) return; // Only on mobile
-    isDown = true; startX = e.clientX; slider.setPointerCapture && slider.setPointerCapture(e.pointerId); track.style.transition = 'none';
-  });
-  slider.addEventListener('pointermove', e=>{
-    if(!isDown) return;
-    latestDx = e.clientX - startX;
-    if(!rafId) rafId = requestAnimationFrame(tick);
-  });
-  slider.addEventListener('pointerup', e=>{
-    if(!isDown) return;
-    isDown = false;
-    const dx = e.clientX - startX;
-    track.style.transition = '';
-    if(Math.abs(dx) > 50){
-      dx < 0 ? go(idx+1) : go(idx-1);
-    } else go(idx);
-    try{ slider.releasePointerCapture && slider.releasePointerCapture(e.pointerId); }catch(_){}
-  });
 })();
 </script>
 </body>
 </html>
-
-
